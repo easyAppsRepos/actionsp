@@ -75,13 +75,6 @@ var ReservarPage = (function () {
         this.modalCtrl = modalCtrl;
     }
     ReservarPage.prototype.ionViewDidLoad = function () {
-        var loading = this.loadingController.create({ content: "cargando..." });
-        loading.present();
-        return this.apiProvider.getClasesReserva()
-            .then(function (data) {
-            console.log(data);
-            loading.dismissAll();
-        });
     };
     ReservarPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
