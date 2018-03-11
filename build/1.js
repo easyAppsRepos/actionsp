@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 285:
+/***/ 294:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NovedadesPageModule", function() { return NovedadesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PerfilPageModule", function() { return PerfilPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__novedades__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__perfil__ = __webpack_require__(306);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var NovedadesPageModule = (function () {
-    function NovedadesPageModule() {
+var PerfilPageModule = (function () {
+    function PerfilPageModule() {
     }
-    NovedadesPageModule = __decorate([
+    PerfilPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__novedades__["a" /* NovedadesPage */],
+                __WEBPACK_IMPORTED_MODULE_2__perfil__["a" /* PerfilPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__novedades__["a" /* NovedadesPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__perfil__["a" /* PerfilPage */]),
             ],
         })
-    ], NovedadesPageModule);
-    return NovedadesPageModule;
+    ], PerfilPageModule);
+    return PerfilPageModule;
 }());
 
-//# sourceMappingURL=novedades.module.js.map
+//# sourceMappingURL=perfil.module.js.map
 
 /***/ }),
 
-/***/ 293:
+/***/ 306:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NovedadesPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PerfilPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(101);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,30 +57,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 /**
- * Generated class for the NovedadesPage page.
+ * Generated class for the PerfilPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var NovedadesPage = (function () {
-    function NovedadesPage(navCtrl, navParams) {
+var PerfilPage = (function () {
+    function PerfilPage(navCtrl, navParams, storage, events) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.storage = storage;
+        this.events = events;
     }
-    NovedadesPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad NovedadesPage');
+    PerfilPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad PerfilPage');
     };
-    NovedadesPage = __decorate([
+    PerfilPage.prototype.cerrarSesion = function () {
+        this.storage.set("usr_tok_datagym", undefined);
+        this.events.publish('userLogout');
+        this.navCtrl.setRoot('InicioPage');
+    };
+    PerfilPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-novedades',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/novedades/novedades.html"*/'<!--\n\n\n  Generated template for the EstadisticaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content   style=\'background-color: #c3d7e6\' >\n\n\n<div class="tituloHome" style="background-color:#6d22d2 !important; text-align:center">NOVEDADES</div>\n\n\n<div style="\n    padding: 20px;\n    border: solid 3px #cccccc;\n    background-color:  white;\n    margin: 27px;\n">\n<p class="novedadesTitulo">Nuevas cintas KIP</p>\n<img src="assets/imgs/cinta1.png">\n<p style="\n    color:  #2f2f2f;\n    font-size: 16px;\n    line-height: 20px;\n">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>\n</div>\n\n\n<div style="\n    padding: 20px;\n    border: solid 3px #cccccc;\n    background-color:  white;\n    margin: 27px;\n">\n<p class="novedadesTitulo">Nuevas cintas KIP</p>\n<img src="assets/imgs/cinta1.png">\n<p style="\n    color:  #2f2f2f;\n    font-size: 16px;\n    line-height: 20px;\n">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>\n</div>\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/novedades/novedades.html"*/,
+            selector: 'page-perfil',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/perfil/perfil.html"*/'<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content  style="background-image: url(\'assets/imgs/fondoPerfil.png\');    background-size: cover;">\n\n<div style="text-align:center">\n <img style=\'border-radius: 100%;\n    width: 150px;\n    margin-top: 20px;\n    margin-bottom: 11px;\n    box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);\' src="assets/imgs/profile.png"> \n <div style="    color: white;\n    font-size: 29px;\n      font-family: normalL;">Martin Dorego</div>\n</div>\n\n  <div style="margin-top:30px;    font-family: normalIt;">\n      <div class="profileEtiq" style="margin-top:12px;text-align:center !important">\n        <div style="font-size: 18px !important;">Socio N</div>\n        <div style="font-size: 30px !important;">45872938</div>\n      </div>\n\n            <div class="profileEtiq" style="margin-top:12px; text-align:center !important">\n        <div style="font-size: 18px !important;">Edad</div>\n        <div style="font-size: 30px !important;">27</div>\n      </div>\n\n            <div class="profileEtiq" style="margin-top:12px;text-align:center !important">\n        <div style="font-size: 18px !important;">Personal Trainer</div>\n        <div style="font-size: 30px !important;">German</div>\n      </div>\n\n\n  </div>\n\n<div style="text-align:center">\n	<button style="    padding-left: 70px;\n    padding-right: 70px;" class="btnAzul">MI RUTINA</button>\n</div>\n\n\n<div style="    text-align: center;\n    text-decoration: underline;\n    color: white;\n    margin-top: 30px;\n    font-size: 20px;\n    font-family: normalL; " (click)="cerrarSesion()">Cerrar sesion</div>\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/perfil/perfil.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
-    ], NovedadesPage);
-    return NovedadesPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]])
+    ], PerfilPage);
+    return PerfilPage;
 }());
 
-//# sourceMappingURL=novedades.js.map
+//# sourceMappingURL=perfil.js.map
 
 /***/ })
 

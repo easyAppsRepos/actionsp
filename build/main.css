@@ -25768,8 +25768,9 @@ ion-navbar.toolbar {
 .containerActividadD div:nth-child(1) span:nth-child(2) {
   font-family: normalIt;
   font-size: 20px;
-  margin-top: -25px;
+  margin-top: -14px;
   display: block;
+  text-align: left !important;
   text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.6);
 }
 
@@ -25805,6 +25806,13 @@ ion-navbar.toolbar {
   margin-top: 3px;
 }
 
+.bodyHome3 {
+  background-image: url("../assets/imgs/bicepFoto.png");
+  height: 207px;
+  background-size: cover;
+  margin-top: 3px;
+}
+
 .bodyHome2 {
   background-image: url("../assets/imgs/bicepFoto.png");
   height: 207px;
@@ -25821,8 +25829,15 @@ ion-navbar.toolbar {
   width: 100%;
   position: absolute;
   z-index: -1;
-  background-color: black;
   opacity: 0.5;
+}
+
+.colorVerde {
+  background-color: green;
+}
+
+.colorDark {
+  background-color: black;
 }
 
 .btnAzul {
@@ -26049,6 +26064,15 @@ ion-navbar.toolbar {
   height: 10px;
   background-color: white;
   margin-bottom: 5px;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: white !important;
+}
+
+.item-ios.item-block .item-inner {
+  border: none !important;
 }
 
 .tituloRutina {
