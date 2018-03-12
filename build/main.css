@@ -25678,6 +25678,17 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+.toolbar-content img {
+  height: 40px !important;
+  float: right !important;
+  margin-right: 18px !important;
+  margin-bottom: 5px !important;
+}
+
+.toolbar-ios {
+  min-height: 55px !important;
+}
+
 .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
   color: white !important;
 }

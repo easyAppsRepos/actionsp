@@ -60,6 +60,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Generated class for the ReservarPage page.
  *
@@ -67,23 +68,106 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var ReservarPage = (function () {
-    function ReservarPage(navCtrl, navParams, apiProvider, loadingController, modalCtrl) {
+    function ReservarPage(navCtrl, navParams, apiProvider, loadingController, modalCtrl, alertCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.apiProvider = apiProvider;
         this.loadingController = loadingController;
         this.modalCtrl = modalCtrl;
+        this.alertCtrl = alertCtrl;
     }
     ReservarPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        var loading = this.loadingController.create({ content: "cargando..." });
+        loading.present();
+        return this.apiProvider.getClasesReserva()
+            .then(function (data) {
+            console.log(data);
+            _this.valoresClases = (Object.values(data));
+            loading.dismissAll();
+        });
+    };
+    ReservarPage.prototype.removeDuplicatesBy = function (prop, array) {
+        var mySet = new Set();
+        return array.filter(function (x) {
+            var key = x[prop], isNew = !mySet.has(key);
+            if (isNew)
+                mySet.add(key);
+            return isNew;
+        });
+    };
+    ReservarPage.prototype.cambioDeHora = function (valorSeleccionado) {
+        this.idClaseReservaSeleccion = null;
+        this.horaValores = this.claseSelecccionada.filter(function (item) {
+            //console.log(item.soloFecha);
+            //console.log(valorSeleccionado);
+            return item.soloFecha == valorSeleccionado;
+        });
+        console.log(this.horaValores);
+    };
+    ReservarPage.prototype.seleccionClase = function (idClaseReserva) {
+        this.idClaseReservaSeleccion = idClaseReserva;
+        console.log(this.horaValores);
+    };
+    ReservarPage.prototype.openModal = function () {
+        var data = { message: 'hello world' };
+        var modalPage = this.modalCtrl.create('LoginPage', data);
+        modalPage.present();
+    };
+    ReservarPage.prototype.presentAlert = function (titulo, mensaje) {
+        var alert = this.alertCtrl.create({
+            title: titulo,
+            subTitle: mensaje,
+            buttons: ['Cerrar']
+        });
+        alert.present();
+    };
+    ReservarPage.prototype.reservarClase = function () {
+        var _this = this;
+        this.apiProvider.verificarLogin()
+            .then(function (data) {
+            console.log(data);
+            data ? _this.agregarReserva(data.idUsuario) : _this.openModal();
+        });
+        // console.log(  this.idClaseReservaSeleccion);
+    };
+    ReservarPage.prototype.agregarReserva = function (idUsuario) {
+        var _this = this;
+        var loading = this.loadingController.create({ content: "cargando..." });
+        loading.present();
+        return this.apiProvider.agregarReserva(idUsuario, this.idClaseReservaSeleccion)
+            .then(function (data) {
+            console.log(data);
+            loading.dismissAll();
+            if (data.data && (data.data.affectedRows > 0)) {
+                console.log(data);
+                _this.presentAlert('Enhorabuena!', 'Enhorabuena! Ya estas inscrit@ en esta clase');
+            }
+            else {
+                console.log('nodata');
+                data.data.errno == 1062 ? _this.presentAlert('Anotado', 'Ya estas anotado a esta clase') :
+                    _this.presentAlert('Ups!', 'Ha ocurrido un error inesperado');
+                //this.presentAlert('Anotado','Ya estas inscrit@ en esta clase');
+            }
+        });
+    };
+    ReservarPage.prototype.cambioDeClase = function (valorSeleccionado) {
+        this.fechaValores = this.removeDuplicatesBy('soloFecha', this.valoresClases[valorSeleccionado]);
+        this.claseSelecccionada = this.valoresClases[valorSeleccionado];
+        this.horaValores = [];
+        this.idClaseReservaSeleccion = null;
+        // console.log(this.valoresClases[valorSeleccionado]);
+        //this.indexSeleccionado = valorSeleccionado;
+        //this.fechaValores = this.valoresClases[valorSeleccionado];
     };
     ReservarPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-reservar',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/reservar/reservar.html"*/'<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content   style=\'background-color: #c3d7e6\' >\n\n\n<div class=\'tituloHome\' style="background-color:#ff0090 !important; text-align:center">RESERVAR CLASE</div>\n<div style="font-family: normalITitulos;">\n<div style="    width: 100%;    margin-top: 40px;">\n  <ion-select [(ngModel)]="clase" placeholder="Clase" class=\'inputTheme\'>\n    <ion-option value="f">AEROBICOS</ion-option>\n    <ion-option value="m">ZUMBA</ion-option>\n  </ion-select>\n</div>\n\n\n<div style="    width: 100%;    margin-top: 18px;">\n  <ion-select [(ngModel)]="dia" placeholder="Dia" class=\'inputTheme\'>\n    <ion-option value="f">20 de febrero</ion-option>\n    <ion-option value="m">23 de febrero</ion-option>\n  </ion-select>\n</div>\n\n\n<div style="    width: 100%;    margin-top: 18px;">\n  <ion-select [(ngModel)]="horario" placeholder="Horario" class=\'inputTheme\'>\n    <ion-option value="f">3pm</ion-option>\n    <ion-option value="m">8pm</ion-option>\n  </ion-select>\n</div>\n</div>\n    <div style="text-align:center; margin-top:30px">\n	<button class="btnAzul" style="    width: 60%;">RESERVAR</button>\n	</div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/reservar/reservar.html"*/,
+            selector: 'page-reservar',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/reservar/reservar.html"*/'<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content   style=\'background-color: #c3d7e6\' >\n\n\n<div class=\'tituloHome\' style="background-color:#ff0090 !important; text-align:center">RESERVAR CLASE</div>\n<div style="font-family: normalITitulos;">\n<div style="    width: 100%;    margin-top: 40px;">\n  <ion-select (ionChange)="cambioDeClase(clase)" [(ngModel)]="clase" placeholder="Clase" class=\'inputTheme\'>\n    <ion-option  value="{{i}}" *ngFor="let c of valoresClases;let i = index"  >{{c[0].nombre}}</ion-option>\n  </ion-select>\n</div>\n\n\n<div style="width: 100%;    margin-top: 18px;" >\n  <ion-select (ionChange)="cambioDeHora(dia)"  [(ngModel)]="dia" placeholder="Dia" class=\'inputTheme\'>\n\n     <ion-option  value="{{f.soloFecha}}" *ngFor="let f of fechaValores;let i = index"  >{{f.diaFecha}} - {{f.soloFecha}}</ion-option>\n\n\n  </ion-select>\n</div>\n\n\n<div style="    width: 100%;    margin-top: 18px;">\n  <ion-select (ionChange)="seleccionClase(horario)"  [(ngModel)]="horario" placeholder="Horario" class=\'inputTheme\'>\n  \n\n    <ion-option  value="{{h.idReservaClase}}" *ngFor="let h of horaValores;let i = index"  >{{h.soloHora}}\n    </ion-option>\n\n\n  </ion-select>\n</div>\n</div>\n    <div style="text-align:center; margin-top:30px">\n	<button [disabled]="!idClaseReservaSeleccion" (click)="reservarClase()" class="btnAzul" style="    width: 60%;">RESERVAR</button>\n	</div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/reservar/reservar.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _f || Object])
     ], ReservarPage);
     return ReservarPage;
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=reservar.js.map
