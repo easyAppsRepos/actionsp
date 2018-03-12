@@ -60,6 +60,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Generated class for the InicioPage page.
  *
@@ -67,17 +68,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var InicioPage = (function () {
-    function InicioPage(navCtrl, navParams, apiProvider, loadingController, modalCtrl) {
+    function InicioPage(navCtrl, navParams, apiProvider, loadingController, modalCtrl, alertCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.apiProvider = apiProvider;
         this.loadingController = loadingController;
         this.modalCtrl = modalCtrl;
+        this.alertCtrl = alertCtrl;
     }
     InicioPage.prototype.openModal = function () {
         var data = { message: 'hello world' };
         var modalPage = this.modalCtrl.create('LoginPage', data);
         modalPage.present();
+    };
+    InicioPage.prototype.presentAlert = function (titulo, mensaje) {
+        var alert = this.alertCtrl.create({
+            title: titulo,
+            subTitle: mensaje,
+            buttons: ['Cerrar']
+        });
+        alert.present();
+    };
+    InicioPage.prototype.solicitarRutina = function () {
+        var _this = this;
+        this.apiProvider.verificarLogin()
+            .then(function (data) {
+            console.log(data);
+            data ? _this.presentAlert('Rutina solicitada', 'Excelente! Tener un plan de ejercicios es el primer paso para cumplir tus metas! Un instructor te asignara la rutina en breve') : _this.openModal();
+        });
     };
     InicioPage.prototype.getDataHome = function () {
         var _this = this;
@@ -105,11 +123,12 @@ var InicioPage = (function () {
     };
     InicioPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-inicio',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/inicio/inicio.html"*/'<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content style=\'background-color: #c3d7e6\'>\n\n\n<!--   <h3>Ionic Menu Starter</h3>\n\n  <p>\n    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.\n  </p>\n\n  <button ion-button secondary menuToggle>Toggle Menu</button> -->\n\n  <div class="sectionHome" *ngIf="proximaClase">\n    <div style=\'background-color: #ff0090\' class="tituloHome">PROXIMA CLASE</div> \n    <div class="bodyHome">\n      <div class=\'tituloBold\' [innerHtml]="proximaClase.nombre"></div>\n      <div style="text-align:center"><div (click)="goClase()" style=\'background-color: #ff0090;\' class=\'masBtn\'>+</div></div>\n    </div>\n  </div>\n\n  <div class="sectionHome" *ngIf="dia" >\n    <div style=\'background-color: #3ec754\' class="tituloHome">EJERCICIO DEL DIA</div> \n    <div class="bodyHome">\n      <div class=\'tituloBold\' [innerHtml]="dia.nombre" ></div>\n      <div style="text-align:center">\n        <div style="background-color: #3ec754;" class=\'masBtn\'  (click)="goActividad()" >+</div>\n      </div>\n    </div>\n\n  </div>\n\n  <div class="sectionHome">\n    <div style=\'background-color: #ff4d00\' class="tituloHome">SOLICITAR RUTINA</div> \n    <div class="bodyHome">\n      <div style="    color: white;\n    font-size: 14px;\n    font-weight: 800;\n    padding-top: 42px;\n    padding-bottom: 20px;    font-family: normalL;">Al momento de tu inscripcion podes <br> solicitar una rutina en la que tu <br> personal trainer podra seguir tus avances</div>\n      <div style="text-align:center"><div  (click)="openModal()" style="  background-color:  #ff4d00;" class=\'masBtn\' >+</div></div>\n    </div>\n\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/inicio/inicio.html"*/,
+            selector: 'page-inicio',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/inicio/inicio.html"*/'<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content style=\'background-color: #c3d7e6\'>\n\n\n<!--   <h3>Ionic Menu Starter</h3>\n\n  <p>\n    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.\n  </p>\n\n  <button ion-button secondary menuToggle>Toggle Menu</button> -->\n\n  <div class="sectionHome" *ngIf="proximaClase">\n    <div style=\'background-color: #ff0090\' class="tituloHome">PROXIMA CLASE</div> \n    <div class="bodyHome">\n      <div class=\'tituloBold\' [innerHtml]="proximaClase.nombre"></div>\n      <div style="text-align:center"><div (click)="goClase()" style=\'background-color: #ff0090;\' class=\'masBtn\'>+</div></div>\n    </div>\n  </div>\n\n  <div class="sectionHome" *ngIf="dia" >\n    <div style=\'background-color: #3ec754\' class="tituloHome">EJERCICIO DEL DIA</div> \n    <div class="bodyHome">\n      <div class=\'tituloBold\' [innerHtml]="dia.nombre" ></div>\n      <div style="text-align:center">\n        <div style="background-color: #3ec754;" class=\'masBtn\'  (click)="goActividad()" >+</div>\n      </div>\n    </div>\n\n  </div>\n\n  <div class="sectionHome">\n\n\n\n\n    <div style=\'background-color: #ff4d00\' class="tituloHome">SOLICITAR RUTINA</div> \n    <div class="bodyHome">\n\n\n\n\n      <div style="    color: white;\n    font-size: 14px;\n    font-weight: 800;\n    padding-top: 42px;\n    padding-bottom: 20px;    font-family: normalL;">Al momento de tu inscripcion podes <br> solicitar una rutina en la que tu <br> personal trainer podra seguir tus avances</div>\n      <div style="text-align:center"><div  (click)="solicitarRutina()" style="  background-color:  #ff4d00;" class=\'masBtn\' >+</div></div>\n    </div>\n\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/inicio/inicio.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _f || Object])
     ], InicioPage);
     return InicioPage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=inicio.js.map
