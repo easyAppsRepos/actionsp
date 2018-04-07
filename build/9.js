@@ -72,6 +72,26 @@ var EscanerPage = (function () {
     };
     EscanerPage.prototype.escanearCodigo = function () {
         console.log('escanearCodigo');
+        cordova.plugins.barcodeScanner.scan(function (result) {
+            alert("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);
+        }, function (error) {
+            alert("Scanning failed: " + error);
+        }, {
+            preferFrontCamera: true,
+            showFlipCameraButton: true,
+            showTorchButton: true,
+            torchOn: true,
+            saveHistory: true,
+            prompt: "Place a barcode inside the scan area",
+            resultDisplayDuration: 500,
+            formats: "QR_CODE,PDF_417",
+            orientation: "landscape",
+            disableAnimations: true,
+            disableSuccessBeep: false // iOS and Android
+        });
     };
     EscanerPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
