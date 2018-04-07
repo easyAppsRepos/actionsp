@@ -92,8 +92,7 @@
 <gap:plugin name="cordova-plugin-inappbrowser" source="npm"  />
 
 
-
-<gap:plugin spec="https://github.com/bitpay/cordova-plugin-qrscanner.git" source="git" />
+<plugin spec="https://github.com/armenbadalyan/cordova-plugin-qrscanner.git" source="git" />
 
        <access origin="*" />
 <allow-intent href="*" />
