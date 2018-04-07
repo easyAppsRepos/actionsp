@@ -73,6 +73,7 @@ var EscanerPage = (function () {
     EscanerPage.prototype.escanearCodigo = function () {
         console.log('escanearCodigo');
         cordova.plugins.barcodeScanner.scan(function (result) {
+            console.log(result);
             alert("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
