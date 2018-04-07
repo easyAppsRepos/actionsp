@@ -1,14 +1,14 @@
 webpackJsonp([2],{
 
-/***/ 293:
+/***/ 294:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NovedadesPageModule", function() { return NovedadesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NuevoSocioPageModule", function() { return NuevoSocioPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__novedades__ = __webpack_require__(305);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nuevo_socio__ = __webpack_require__(307);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var NovedadesPageModule = (function () {
-    function NovedadesPageModule() {
+var NuevoSocioPageModule = (function () {
+    function NuevoSocioPageModule() {
     }
-    NovedadesPageModule = __decorate([
+    NuevoSocioPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__novedades__["a" /* NovedadesPage */],
+                __WEBPACK_IMPORTED_MODULE_2__nuevo_socio__["a" /* NuevoSocioPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__novedades__["a" /* NovedadesPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__nuevo_socio__["a" /* NuevoSocioPage */]),
             ],
         })
-    ], NovedadesPageModule);
-    return NovedadesPageModule;
+    ], NuevoSocioPageModule);
+    return NuevoSocioPageModule;
 }());
 
-//# sourceMappingURL=novedades.module.js.map
+//# sourceMappingURL=nuevo-socio.module.js.map
 
 /***/ }),
 
-/***/ 305:
+/***/ 307:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NovedadesPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NuevoSocioPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_api_api__ = __webpack_require__(100);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,30 +59,53 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+
+
+
+
+
+
 /**
- * Generated class for the NovedadesPage page.
+ * Generated class for the NuevoSocioPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var NovedadesPage = (function () {
-    function NovedadesPage(navCtrl, navParams) {
+var NuevoSocioPage = (function () {
+    function NuevoSocioPage(navCtrl, navParams, apiProvider, viewCtrl, loadingController, alertCtrl, formBuilder, modalCtrl, storage, events) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.apiProvider = apiProvider;
+        this.viewCtrl = viewCtrl;
+        this.loadingController = loadingController;
+        this.alertCtrl = alertCtrl;
+        this.formBuilder = formBuilder;
+        this.modalCtrl = modalCtrl;
+        this.storage = storage;
+        this.events = events;
+        this.slideOneForm = formBuilder.group({
+            firstName: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].maxLength(10), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].pattern('^[0-9]{1,45}$'), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required])],
+            lastName: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].maxLength(10), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].pattern('^[0-9]{1,45}$'), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required])]
+        });
     }
-    NovedadesPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad NovedadesPage');
+    NuevoSocioPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad NuevoSocioPage');
     };
-    NovedadesPage = __decorate([
+    NuevoSocioPage.prototype.closeModal = function () {
+        this.viewCtrl.dismiss();
+    };
+    NuevoSocioPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-novedades',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/novedades/novedades.html"*/'<!--\n\n\n  Generated template for the EstadisticaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content   style=\'background-color: #c3d7e6\' >\n\n\n<div class="tituloHome" style="background-color:#6d22d2 !important; text-align:center">NOVEDADES</div>\n\n\n<div style="\n    padding: 20px;\n    border: solid 3px #cccccc;\n    background-color:  white;\n    margin: 27px;\n">\n<p class="novedadesTitulo">Nuevas cintas KIP</p>\n<img src="assets/imgs/cinta1.png">\n<p style="\n    color:  #2f2f2f;\n    font-size: 16px;\n    line-height: 20px;\n">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>\n</div>\n\n\n<div style="\n    padding: 20px;\n    border: solid 3px #cccccc;\n    background-color:  white;\n    margin: 27px;\n">\n<p class="novedadesTitulo">Nuevas cintas KIP</p>\n<img src="assets/imgs/cinta1.png">\n<p style="\n    color:  #2f2f2f;\n    font-size: 16px;\n    line-height: 20px;\n">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>\n</div>\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/novedades/novedades.html"*/,
+            selector: 'page-nuevo-socio',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/nuevo-socio/nuevo-socio.html"*/'<!--\n  Generated template for the NuevoSocioPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Registro</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n\n\n\n  <button style="position: absolute;\n    top: 0;\n    left: 0;\n    height: 50px;\n    width: 50px;\n    font-size: 40px;\n    padding: 0px;\n    background-color: transparent;\n    border: none;\n    color: white;" ion-button icon-close (click)="closeModal()">\n  <ion-icon name="close"></ion-icon>\n  \n</button>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/nuevo-socio/nuevo-socio.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
-    ], NovedadesPage);
-    return NovedadesPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]])
+    ], NuevoSocioPage);
+    return NuevoSocioPage;
 }());
 
-//# sourceMappingURL=novedades.js.map
+//# sourceMappingURL=nuevo-socio.js.map
 
 /***/ })
 

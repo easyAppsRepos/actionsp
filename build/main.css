@@ -25686,7 +25686,12 @@ ion-navbar.toolbar {
 }
 
 .toolbar-ios {
-  min-height: 55px !important;
+  min-height: 67px !important;
+}
+
+.bar-button-menutoggle-ios {
+  width: 60px !important;
+  height: 54px !important;
 }
 
 .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
@@ -25706,8 +25711,9 @@ ion-navbar.toolbar {
 }
 
 .menuIcono {
-  height: 33px;
+  width: 35px;
   vertical-align: middle;
+  margin-right: 7px;
 }
 
 .itemMenu {
@@ -25810,11 +25816,19 @@ ion-navbar.toolbar {
   padding-bottom: 8px;
 }
 
+.btnMas {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+}
+
 .bodyHome {
   background-image: url("../assets/imgs/homeImg1.png");
   height: 207px;
   background-size: cover;
-  margin-top: 3px;
+  margin-bottom: 3px;
+  position: relative;
 }
 
 .bodyHome3 {
@@ -25884,6 +25898,16 @@ ion-navbar.toolbar {
   font-size: 20px;
 }
 
+.inputTheme2 {
+  background-color: transparent !important;
+  border-bottom: solid 3px #1ca7fc;
+  color: white;
+  width: 70%;
+  max-width: 70% !important;
+  margin: auto;
+  font-size: 20px;
+}
+
 .select-ios .select-placeholder {
   color: white !important;
   font-size: 20px;
@@ -25903,6 +25927,13 @@ ion-navbar.toolbar {
 @font-face {
   font-family: 'tituloItalic';
   src: url("../assets/font/ave/AvenirNextLTPro-HeavyCnIt.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'tituloHItalic';
+  src: url("../assets/font/ave/AvenirNextLTPro-HeavyIt_0.otf");
   font-weight: normal;
   font-style: normal;
 }
@@ -25974,11 +26005,11 @@ ion-navbar.toolbar {
 
 .tituloBold {
   color: white;
-  font-size: 55px;
+  font-size: 45px;
   font-weight: 800;
   padding-top: 59px;
   padding-bottom: 28px;
-  font-family: tituloItalic;
+  font-family: tituloHItalic;
 }
 
 .maquinabtn {
@@ -26030,7 +26061,7 @@ ion-navbar.toolbar {
 
 .tituloHorarios {
   font-size: 33px;
-  font-family: tituloItalic;
+  font-family: tituloHItalic;
 }
 
 .horariosTipo {
@@ -26059,7 +26090,6 @@ ion-navbar.toolbar {
   -webkit-box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
   box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 5px;
-  margin-top: 5px;
 }
 
 .timer-button {
@@ -26075,6 +26105,23 @@ ion-navbar.toolbar {
   height: 10px;
   background-color: white;
   margin-bottom: 5px;
+}
+
+page-equipamento .masBtn {
+  background-color: #3ec754;
+  position: absolute;
+  right: 0;
+  bottom: 33px;
+}
+
+page-equipamento .maquinaData {
+  display: table-cell;
+  font-family: normalIt;
+  padding-left: 16px;
+  background-color: #d2dade;
+  position: relative;
+  padding-bottom: 7px;
+  padding-top: 17px;
 }
 
 ::-webkit-input-placeholder {

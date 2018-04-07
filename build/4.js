@@ -1,14 +1,14 @@
 webpackJsonp([4],{
 
-/***/ 291:
+/***/ 292:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MiRutinaPageModule", function() { return MiRutinaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(303);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mi_rutina__ = __webpack_require__(305);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginPageModule = (function () {
-    function LoginPageModule() {
+var MiRutinaPageModule = (function () {
+    function MiRutinaPageModule() {
     }
-    LoginPageModule = __decorate([
+    MiRutinaPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_2__mi_rutina__["a" /* MiRutinaPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__mi_rutina__["a" /* MiRutinaPage */]),
             ],
         })
-    ], LoginPageModule);
-    return LoginPageModule;
+    ], MiRutinaPageModule);
+    return MiRutinaPageModule;
 }());
 
-//# sourceMappingURL=login.module.js.map
+//# sourceMappingURL=mi-rutina.module.js.map
 
 /***/ }),
 
-/***/ 303:
+/***/ 305:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MiRutinaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_api_api__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_api_api__ = __webpack_require__(100);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,85 +60,73 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
-
-
 /**
- * Generated class for the LoginPage page.
+ * Generated class for the MiRutinaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var LoginPage = (function () {
-    function LoginPage(navCtrl, navParams, apiProvider, viewCtrl, loadingController, alertCtrl, formBuilder, modalCtrl, storage, events) {
+var MiRutinaPage = (function () {
+    function MiRutinaPage(navCtrl, navParams, apiProvider, loadingController, events) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.apiProvider = apiProvider;
-        this.viewCtrl = viewCtrl;
         this.loadingController = loadingController;
-        this.alertCtrl = alertCtrl;
-        this.formBuilder = formBuilder;
-        this.modalCtrl = modalCtrl;
-        this.storage = storage;
         this.events = events;
-        this.slideOneForm = formBuilder.group({
-            firstName: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].maxLength(10), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].pattern('^[0-9]{1,45}$'), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required])],
-            lastName: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].maxLength(10), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].pattern('^[0-9]{1,45}$'), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required])]
+        events.subscribe('updateRutin', function () {
+            _this.apiProvider.verificarLogin()
+                .then(function (data) {
+                _this.apiProvider.getRutinaUsuario(data.idUsuario)
+                    .then(function (data) {
+                    _this.proximoEjercicio = data[1][0];
+                    _this.diasRutina = (Object.values(data[0]));
+                    console.log(_this.diasRutina);
+                    console.log(_this.proximoEjercicio);
+                });
+            });
         });
     }
-    LoginPage.prototype.ionViewDidLoad = function () {
-        this.apiProvider.verificarLogin()
-            .then(function (data) {
-            console.log(data);
-        });
-        /*
-        this.storage.get('usr_tok_datagym').then((value) => {
-        value ? this.userLogged = true : this.userLogged = false
-        console.log(value);
-        }).catch(() => this.userLogged = false);
-        */
-    };
-    LoginPage.prototype.presentAlert = function (titulo, mensaje) {
-        var alert = this.alertCtrl.create({
-            title: titulo,
-            subTitle: mensaje,
-            buttons: ['Cerrar']
-        });
-        alert.present();
-    };
-    LoginPage.prototype.doLogin = function () {
+    MiRutinaPage.prototype.ionViewDidLoad = function () {
         var _this = this;
         var loading = this.loadingController.create({ content: "cargando..." });
         loading.present();
-        this.apiProvider.doLoginApi(this.slideOneForm.value)
+        this.apiProvider.verificarLogin()
             .then(function (data) {
-            loading.dismissAll();
-            if (data.data[0] && (data.data[0].idUsuario > 0)) {
-                console.log(data);
-                _this.storage.set("usr_tok_datagym", data.data[0]);
-                _this.events.publish('userCreated', data.data[0]);
-                _this.closeModal();
-            }
-            else {
-                _this.presentAlert('Ups!', 'Credenciales incorrectas');
-            }
+            _this.apiProvider.getRutinaUsuario(data.idUsuario)
+                .then(function (data) {
+                _this.proximoEjercicio = data[1][0];
+                _this.diasRutina = (Object.values(data[0]));
+                console.log(_this.diasRutina.length);
+                loading.dismissAll();
+                console.log(_this.proximoEjercicio);
+            });
         });
     };
-    LoginPage.prototype.closeModal = function () {
-        this.viewCtrl.dismiss();
+    MiRutinaPage.prototype.getPorcentaje = function (dia) {
+        var num = 0;
+        dia.forEach(function (item) {
+            if (item.completado) {
+                num++;
+            }
+        });
+        var enviar = ((num * 100) / (dia.length)) + '%';
+        return enviar;
     };
-    LoginPage = __decorate([
+    MiRutinaPage.prototype.goActividad = function () {
+        //console.log(this.proximoEjercicio.idActividad);
+        this.navCtrl.push('ActividadPage', { idActividad: this.proximoEjercicio.idActividad, idR: this.proximoEjercicio.idRutinaActividad });
+    };
+    MiRutinaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n\n\n\n<ion-content  style="background-image: url(\'assets/imgs/loginFondo.png\');    background-size: cover; "   >\n\n<div class="capaOscuridad" style="z-index:0 !important;height: 100% !important;     background-color: black !important;"></div>\n\n\n\n  <button style="position: absolute;\n    top: 0;\n    left: 0;\n\n    height: 50px;\n    width: 50px;\n    font-size: 40px;\n    padding: 0px;\n    background-color: transparent;\n    border: none;\n    color: white;" ion-button icon-close (click)="closeModal()">\n  <ion-icon name="close"></ion-icon>\n  \n</button>\n\n\n\n<div style="    text-align: center;\n    margin-top: 25%;\n    position: absolute;\n    width: 100%;\n    height: 100%;">\n <img style=\'border-radius: 100%;\n    width: 280px;\n    margin-top: 20px;\n    margin-bottom: 61px;\n    box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);\' src="assets/imgs/logoGrande.png"> \n 	<div style="    color: white;\n    font-size: 29px;\n      font-family: normalL;">\n\n<!-- \n      	<input style=\'    border-top: none !important;\n    border-left: none !important;\n    border-right: none !important;    padding-left: 12px;\n    border-radius: 7px 7px 0px 0px;\' class=\'inputTheme\' placeholder="ID Socio" >\n\n    <input style=\'margin-top: 10px;    border-top: none !important;\n    border-left: none !important;\n    border-right: none !important;    padding-left: 12px;\n    border-radius: 7px 7px 0px 0px;\' class=\'inputTheme\' placeholder="Codigo de Acceso" >\n\n -->\n<!-- \n\n <ion-item class=\'inputTheme\' style=\'    padding-top: 0px !important;\'>\n <ion-input type="number" placeholder="ID Socio" style=\'border-top: none !important;\n    border-left: none !important;\n    border-right: none !important;    padding-left: 12px;\n    border-radius: 11px 11px 0px 0px;\'></ion-input>\n\n <button clear item-right style="font-size: 30px; color: white;background-color: transparent;"><ion-icon name="arrow-round-forward"></ion-icon></button>\n\n</ion-item>\n -->\n\n	<ion-list no-lines>\n\n			<form [formGroup]="slideOneForm">\n\n				<ion-item  class=\'inputTheme\' style=\'    padding-top: 0px !important;\'>\n					<ion-label floating>ID Socio</ion-label>\n					<ion-input formControlName="firstName" type="number" [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"></ion-input>\n				</ion-item>\n\n				<ion-item  class=\'inputTheme\' style=\'    padding-top: 0px !important;\' *ngIf="!slideOneForm.controls.firstName.valid  && (slideOneForm.controls.firstName.dirty || submitAttempt)">\n					<p  style="color: lightcoral;" >ID socio invalido</p>\n				</ion-item>\n\n				<ion-item class=\'inputTheme\' style=\'    padding-top: 0px !important;\'>\n					<ion-label floating>Codigo</ion-label>\n					<ion-input formControlName="lastName" type="number" [class.invalid]="!slideOneForm.controls.lastName.valid"></ion-input>\n				</ion-item>\n\n				<ion-item  class=\'inputTheme\' style=\'    padding-top: 0px !important;\' *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty )">\n					<p style="color: lightcoral;">Codigo Invalido</p>\n				</ion-item>\n\n\n			</form>\n\n		</ion-list>\n\n\n\n\n      </div>\n\n\n<div style="\n    color:  white;\n    display: inline-block;\n    width: 70%;\n    margin-top:  8px;\n    height: 32px;\n    font-size:  15px;\n    font-family: normalL;\n">\n\n<button style=\'margin-bottom: 10px\' ion-button full [disabled]="!((slideOneForm.controls.lastName.valid)  && (slideOneForm.controls.firstName.valid))"   (click)="doLogin()" >Ingresar</button>\n\n\n      	<div style="\n    display: inline-block;    width: 49%;\n    float: left;    height: 35px;\n">Olvide mi cuenta</div>\n      		<div style="\n    display: inline-block;\n    float: right;    width: 49%;height: 35px;\n">Quiero ser socio</div>\n\n      </div>\n</div>\n\n\n\n</ion-content>'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/login/login.html"*/,
+            selector: 'page-mi-rutina',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/mi-rutina/mi-rutina.html"*/'<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content  style=\'background-color: #c3d7e6\' >\n\n<div class=\'tituloRutina tituloHome\'>MI RUTINA</div>\n<div *ngIf=\'diasRutina?.length == 0 && !proximoEjercicio\'>\n          <div class="sectionHome">\n    <div>\n      <div style="    color: white;\n    font-size: 16px;\n    font-weight: 800;\n        padding-left: 30px;\n    padding-right: 30px;\n    color:#777;\n    padding-top: 42px;\n    padding-bottom: 20px;    font-family: normalL;">Actualmente no tienes una rutina asignada, solicita una ahora mismo y empieza a entrenar! </div>\n      <div style="text-align:center"><div style="  background-color:  #ff4d00;" class=\'masBtn\' >+</div></div>\n    </div>\n  </div>\n\n</div>\n\n<div *ngIf=\'diasRutina\'>\n\n  <div class="sectionHome" *ngIf=\'proximoEjercicio\'>\n    <div style=\'margin-top:7px;background-color: #3ec754\' class="tituloHome">PROXIMO EJERCICIO</div> \n    <div class="bodyHome" tappable (click)="goActividad()">\n      <div class="tituloBold">{{proximoEjercicio?.nombre}}</div>\n      <div style="text-align:center">\n        <div style=\'background-color: #3ec754;\' class=\'masBtn\' >+</div>\n      </div>\n    </div>\n\n  </div>\n\n<!--     <div class="sectionHome" *ngIf=\'!proximoEjercicio && !(diasRutina?.length == 0)\'>\n    <div style=\'padding-left:20px; padding-right:20px;font-size:16px !important;margin-top:7px;background-color: #3ec754\' class="tituloHome">Enhorabuena! Has finalizado la rutina de esta semana</div> \n  </div>\n -->\n\n\n<div class="diaContainer" *ngFor="let dia of diasRutina;let i = index" >\n		<span class="diaTitulo" >DIA {{i+1}}</span>\n		<div style="\n    width:  100%;\n    height: 100%;\n    background: #ff4d00;\n    position: absolute;\n    top: 0;\n    z-index:  -1;\n    opacity: 0.66;\n"></div>\n		<div  [ngStyle]="{\'width\': getPorcentaje(dia)}" style="\n    \n    height: 100%;\n    background: #3ec754;\n    position: absolute;\n    top: 0;\n    z-index: -1;\n"></div>\n</div>\n\n\n\n<!-- \n<div class="diaContainer">\n		<span  class="diaTitulo">MARTES</span>\n		<div style="\n    width:  100%;\n    height: 100%;\n    background: #ff4d00;\n    position: absolute;\n    top: 0;\n    z-index:  -1;\n    opacity: 0.66;\n"></div>\n</div>\n\n\n<div class="diaContainer">\n		<span class="diaTitulo">MIERCOLES</span>\n		<div style="\n    width:  100%;\n    height: 100%;\n    background: #ff4d00;\n    position: absolute;\n    top: 0;\n    z-index:  -1;\n    opacity: 0.66;\n"></div>\n\n</div> -->\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/mi-rutina/mi-rutina.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]])
-    ], LoginPage);
-    return LoginPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]])
+    ], MiRutinaPage);
+    return MiRutinaPage;
 }());
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=mi-rutina.js.map
 
 /***/ })
 
