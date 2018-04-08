@@ -59,7 +59,7 @@ var ApiProvider = (function () {
             _this.http.get('https://lfconnect.com/q?t=s&m=sshad').subscribe(function (data) {
                 resolve(data);
             }, function (err) {
-                console.log(err);
+                resolve(null);
             });
         });
     };
