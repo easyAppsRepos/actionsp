@@ -72,6 +72,7 @@ var ApiProvider = (function () {
     ApiProvider.prototype.getYoutubeLink = function (linkIR) {
         var _this = this;
         return new Promise(function (resolve) {
+            console.log(linkIR);
             _this.http.get(linkIR).subscribe(function (data) {
                 resolve(data);
             }, function (err) {
