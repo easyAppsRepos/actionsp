@@ -71,7 +71,6 @@ var EscanerPage = (function () {
         this.navParams = navParams;
         this.apiProvider = apiProvider;
         this.loadingController = loadingController;
-        this.self = this;
     }
     EscanerPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad EscanerPage');
@@ -84,30 +83,29 @@ var EscanerPage = (function () {
             _this.navCtrl.push('YoutubevidePage', data.items[0]);
         });
     };
-    EscanerPage.prototype.barQR = function (result, loading) {
-        var _this = this;
-        console.log(result);
-        //var ref = cordova.InAppBrowser.open(result.text, '_system', 'location=yes');
-        this.apiProvider.getYoutubeLink(result.text)
-            .then(function (data) {
-            loading.dismissAll();
-            if (data) {
-                console.log(data.url);
-                var youtubeVideo = data.url.split("v=")[1];
-                //YoutubeVideoPlayer.openVideo(youtubeVideo, function(result) { console.log('YoutubeVideoPlayer result = ' + result); console.log(result);});
-                _this.goVideo(youtubeVideo);
-            }
-            else {
-                console.log('errQR');
-                console.log(data);
-            }
-        });
-    };
     EscanerPage.prototype.escanearCodigo = function () {
-        var loading = this.loadingController.create({ content: "cargando..." });
+        var me = this;
+        var loading = me.loadingController.create({ content: "cargando..." });
         loading.present();
         console.log('escanearCodigo');
-        cordova.plugins.barcodeScanner.scan(this.barQR(result, loading), function (error) {
+        cordova.plugins.barcodeScanner.scan(function (result) {
+            console.log(result);
+            //var ref = cordova.InAppBrowser.open(result.text, '_system', 'location=yes');
+            me.apiProvider.getYoutubeLink(result.text)
+                .then(function (data) {
+                loading.dismissAll();
+                if (data) {
+                    console.log(data.url);
+                    var youtubeVideo = data.url.split("v=")[1];
+                    //YoutubeVideoPlayer.openVideo(youtubeVideo, function(result) { console.log('YoutubeVideoPlayer result = ' + result); console.log(result);});
+                    me.goVideo(youtubeVideo);
+                }
+                else {
+                    console.log('errQR');
+                    console.log(data);
+                }
+            });
+        }, function (error) {
             alert("Ups, ha ocurrido un error: " + error);
         }, {
             preferFrontCamera: true,
@@ -115,7 +113,7 @@ var EscanerPage = (function () {
             showTorchButton: true,
             torchOn: true,
             saveHistory: true,
-            prompt: "Place a barcode inside the scan area",
+            prompt: "Coloca el QR de la maquina dentro del recuadro",
             resultDisplayDuration: 500,
             formats: "QR_CODE,PDF_417",
             orientation: "landscape",
