@@ -77,7 +77,9 @@
 
   <preference name="YouTubeDataApiKey" value="AIzaSyBSJcqdt3hnOf3NYcmiKDAzwEi4lvZxeR8" />
 
-
+<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+    <string>Escanear QR</string>
+</edit-config>
 
 <!--   <gap:plugin name="cordova-plugin-camera"  source="npm"  spec="2.4.1" />
   <gap:plugin name="cordova-plugin-file-transfer"  source="npm" spec="1.6.3" />
