@@ -198,10 +198,9 @@ var ApiProvider = (function () {
     };
     ApiProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
     ], ApiProvider);
     return ApiProvider;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=api.js.map
@@ -230,19 +229,19 @@ webpackEmptyAsyncContext.id = 113;
 
 var map = {
 	"../pages/actividad/actividad.module": [
-		284,
+		285,
 		12
 	],
 	"../pages/clase/clase.module": [
-		285,
+		284,
 		11
 	],
 	"../pages/equipamento/equipamento.module": [
-		286,
+		287,
 		10
 	],
 	"../pages/escaner/escaner.module": [
-		287,
+		286,
 		9
 	],
 	"../pages/estadistica/estadistica.module": [
@@ -258,11 +257,11 @@ var map = {
 		6
 	],
 	"../pages/login/login.module": [
-		291,
+		292,
 		5
 	],
 	"../pages/mi-rutina/mi-rutina.module": [
-		292,
+		291,
 		4
 	],
 	"../pages/novedades/novedades.module": [
@@ -270,11 +269,11 @@ var map = {
 		3
 	],
 	"../pages/nuevo-socio/nuevo-socio.module": [
-		294,
+		295,
 		2
 	],
 	"../pages/perfil/perfil.module": [
-		295,
+		294,
 		1
 	],
 	"../pages/reservar/reservar.module": [
@@ -368,18 +367,18 @@ var AppModule = (function () {
                     backButtonText: ''
                 }, {
                     links: [
-                        { loadChildren: '../pages/actividad/actividad.module#ActividadPageModule', name: 'ActividadPage', segment: 'actividad', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/clase/clase.module#ClasePageModule', name: 'ClasePage', segment: 'clase', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/equipamento/equipamento.module#EquipamentoPageModule', name: 'EquipamentoPage', segment: 'equipamento', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/actividad/actividad.module#ActividadPageModule', name: 'ActividadPage', segment: 'actividad', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/escaner/escaner.module#EscanerPageModule', name: 'EscanerPage', segment: 'escaner', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/equipamento/equipamento.module#EquipamentoPageModule', name: 'EquipamentoPage', segment: 'equipamento', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/estadistica/estadistica.module#EstadisticaPageModule', name: 'EstadisticaPage', segment: 'estadistica', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/horarios/horarios.module#HorariosPageModule', name: 'HorariosPage', segment: 'horarios', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/inicio/inicio.module#InicioPageModule', name: 'InicioPage', segment: 'inicio', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/mi-rutina/mi-rutina.module#MiRutinaPageModule', name: 'MiRutinaPage', segment: 'mi-rutina', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/novedades/novedades.module#NovedadesPageModule', name: 'NovedadesPage', segment: 'novedades', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/nuevo-socio/nuevo-socio.module#NuevoSocioPageModule', name: 'NuevoSocioPage', segment: 'nuevo-socio', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/perfil/perfil.module#PerfilPageModule', name: 'PerfilPage', segment: 'perfil', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/nuevo-socio/nuevo-socio.module#NuevoSocioPageModule', name: 'NuevoSocioPage', segment: 'nuevo-socio', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reservar/reservar.module#ReservarPageModule', name: 'ReservarPage', segment: 'reservar', priority: 'low', defaultHistory: [] }
                     ]
                 }),

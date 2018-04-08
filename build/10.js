@@ -1,6 +1,6 @@
 webpackJsonp([10],{
 
-/***/ 286:
+/***/ 287:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EquipamentoPageModule", function() { return EquipamentoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__equipamento__ = __webpack_require__(299);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__equipamento__ = __webpack_require__(300);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var EquipamentoPageModule = (function () {
 
 /***/ }),
 
-/***/ 299:
+/***/ 300:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -91,10 +91,9 @@ var EquipamentoPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-equipamento',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/equipamento/equipamento.html"*/'<!--\n\n\n  Generated template for the EstadisticaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content   style=\'background-color: #c3d7e6\' >\n\n\n<div class="tituloHome"  style="background-color:#3ec754 !important; text-align:center ">EQUIPAMENTO</div>\n\n    <div style="width:100%;    display: table; table-layout: fixed;" *ngFor="let e of dataEquipamento; let i = index">\n      <div [style.backgroundColor]="i%2 !== 0 ? \'#d2dade\' : \'white\'" style=" display: table-cell;\n    vertical-align: top;\n\n    padding-top: 13px;\n       text-align: center;\n       color: #2f2f2f;\n    font-size: 13px;        width: 36%;">\n      <img style=\'    width: 70px;\n    padding-bottom: 10px;\' src="assets/imgs/maquina1.png">\n      </div>\n      <div   [style.backgroundColor]="i%2 == 0 ? \'#d2dade\' : \'white\'" class="maquinaData">\n            <div style="    font-size: 23px;\n    color: #4c4c4c;\n    ">{{e.nombre}}</div>\n            <div style="\n            font-size: 18px;\n    color: #5a5c5d;\n    ">{{e.item1}}</div>\n                <div style="\n            font-size: 18px;\n    color: #5a5c5d;\n    ">{{e.item2}}</div>\n                <div style="\n            font-size: 18px;\n    color: #5a5c5d;\n    ">{{e.item3}}</div>\n\n\n<div style="background-color: #3ec754;" class=\'masBtn maquinabtn\'>+</div>\n\n\n          </div>\n    </div>\n\n\n\n\n\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/equipamento/equipamento.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]])
     ], EquipamentoPage);
     return EquipamentoPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=equipamento.js.map
