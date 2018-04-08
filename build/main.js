@@ -73,7 +73,7 @@ var ApiProvider = (function () {
         var _this = this;
         return new Promise(function (resolve) {
             console.log(linkIR);
-            _this.http.get(linkIR).subscribe(function (data) {
+            _this.http.get(linkIR, { responseType: 'text' }).subscribe(function (data) {
                 resolve(data);
             }, function (err) {
                 console.log(err);
