@@ -95,6 +95,7 @@ var EscanerPage = (function () {
                 .then(function (data) {
                 loading.dismissAll();
                 if (data) {
+                    console.log(data);
                     console.log(data.url);
                     var youtubeVideo = data.url.split("v=")[1];
                     //YoutubeVideoPlayer.openVideo(youtubeVideo, function(result) { console.log('YoutubeVideoPlayer result = ' + result); console.log(result);});
