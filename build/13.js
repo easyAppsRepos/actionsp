@@ -70,6 +70,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var ActividadPage = (function () {
     function ActividadPage(navCtrl, navParams, apiProvider, loadingController, alertCtrl, modalCtrl, events) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.apiProvider = apiProvider;
@@ -78,7 +79,12 @@ var ActividadPage = (function () {
         this.modalCtrl = modalCtrl;
         this.events = events;
         this.actividadData = {};
+        this.proximoEjercicio = {};
         this.ejercicioCompletado = false;
+        events.subscribe('registrarNuevoEjercicio', function (ejercicioNuevo) {
+            _this.proximoEjercicio = ejercicioNuevo;
+            console.log(_this.proximoEjercicio);
+        });
     }
     ActividadPage.prototype.ionViewWillEnter = function () {
         var _this = this;
@@ -93,7 +99,22 @@ var ActividadPage = (function () {
             loading.dismissAll();
         });
     };
+    ActividadPage.prototype.recargarEjercicio = function () {
+        var _this = this;
+        //agregar alert de no se cargo ok
+        var loading = this.loadingController.create({ content: "cargando..." });
+        loading.present();
+        this.apiProvider.getActividadData(this.proximoEjercicio.idActividad)
+            .then(function (data) {
+            console.log(data);
+            _this.ejercicioCompletado = false;
+            _this.actividadData = data[0];
+            loading.dismissAll();
+        });
+    };
     ActividadPage.prototype.ionViewDidLoad = function () {
+        this.proximoEjercicio.idActividad = this.navParams.get('idActividad');
+        this.proximoEjercicio.idRutinaActividad = this.navParams.get('idR');
     };
     ActividadPage.prototype.actualizarRutina = function () {
         this.events.publish('updateRutin');
@@ -110,19 +131,33 @@ var ActividadPage = (function () {
         var modalPage = this.modalCtrl.create('LoginPage');
         modalPage.present();
     };
+    ActividadPage.prototype.getNuevoEjercicio = function () {
+        /*
+            this.apiProvider.siguienteEjercicioUsuario(this.idUsuario)
+            .then(data => {
+            console.log(data.data[0]);
+            this.proximoEjercicio = data.data[0];
+             //console.log(this.proximoEjercicio);
+            });
+      */
+    };
     ActividadPage.prototype.completarEjercicioApi = function () {
         var _this = this;
         console.log('adsasda');
         console.log(this.idUsuario);
         var loading = this.loadingController.create({ content: "cargando..." });
         loading.present();
-        this.apiProvider.completarEjercicio(this.navParams.get('idActividad'), this.navParams.get('idR'), this.idUsuario)
+        console.log(this.proximoEjercicio.idActividad);
+        console.log(this.proximoEjercicio.idRutinaActividad);
+        console.log(this.idUsuario);
+        this.apiProvider.completarEjercicio(this.proximoEjercicio.idActividad, this.proximoEjercicio.idRutinaActividad, this.idUsuario)
             .then(function (data) {
             console.log(data);
             loading.dismissAll();
             if (data.data.affectedRows > 0) {
                 _this.events.publish('updateRutin');
                 _this.ejercicioCompletado = true;
+                // this.getNuevoEjercicio();
                 _this.presentAlert('Enhorabuena!', 'Has completado el ejercicio');
             }
         });
@@ -158,12 +193,12 @@ var ActividadPage = (function () {
     };
     ActividadPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-actividad',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/actividad/actividad.html"*/'<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content   style="background-image: url(\'assets/imgs/bicepFoto.png\');    background-size: cover;" >\n<div [ngClass]="{\'colorVerde\' : ejercicioCompletado, \'colorDark\' : !ejercicioCompletado}" class="capaOscuridad" style="height:140% !important; position:fixed"></div>\n<div  *ngIf=\'actividadData\'>\n	<div style="  text-align: center;\n    color: white;\n    font-size: 65px;\n    font-family: tituloItalic;\n    text-shadow: 2px 4px 3px rgba(0,0,0,0.6);\n    margin-top: 25px;" [innerHtml]="actividadData.nombre">\n		\n	</div>\n<div class="containerActividadD">\n  <div >\n    <span >{{actividadData.cantidadEjercicio}}</span>\n    <span >{{actividadData.etiquetaEjercicio}}</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono1.png">\n  </div>\n</div>\n\n<div  class="containerActividadD" *ngIf=\'!ejercicioCompletado\'>\n  <div>\n    <span >{{actividadData.dificultad}}%</span>\n    <span >Dificultad</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono2.png" >\n  </div>\n</div>\n\n<div  class="containerActividadD" *ngIf=\'ejercicioCompletado\'>\n  <div>\n    <span >{{actividadData.kgFuerza}}</span>\n    <span >Kilogramos/fuerza</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono2.png" >\n  </div>\n</div>\n\n\n<div  class="containerActividadD" *ngIf=\'ejercicioCompletado\'>\n  <div>\n    <span >{{actividadData.calorias}}</span>\n    <span>Calorias perdidas</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono4.png" >\n  </div>\n</div>\n\n\n<div style="text-align:center; margin-top:15px; margin-bottom:30px" *ngIf=\'!ejercicioCompletado\'>\n<button class="btnAzul"  (click)="completarEjercicio()" >Completar ejercicio</button>\n</div>\n\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/actividad/actividad.html"*/,
+            selector: 'page-actividad',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/actividad/actividad.html"*/'<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content   style="background-image: url(\'assets/imgs/bicepFoto.png\');    background-size: cover;" >\n<div [ngClass]="{\'colorVerde\' : ejercicioCompletado, \'colorDark\' : !ejercicioCompletado}" class="capaOscuridad" style="height:140% !important; position:fixed"></div>\n<div  *ngIf=\'actividadData\'>\n	<div style="  text-align: center;\n    color: white;\n    font-size: 65px;\n    font-family: tituloItalic;\n    text-shadow: 2px 4px 3px rgba(0,0,0,0.6);\n    margin-top: 25px;" [innerHtml]="actividadData.nombre">\n		\n	</div>\n<div class="containerActividadD">\n  <div >\n    <span >{{actividadData.cantidadEjercicio}}</span>\n    <span >{{actividadData.etiquetaEjercicio}}</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono1.png">\n  </div>\n</div>\n\n<div  class="containerActividadD" *ngIf=\'!ejercicioCompletado\'>\n  <div>\n    <span >{{actividadData.dificultad}}%</span>\n    <span >Dificultad</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono2.png" >\n  </div>\n</div>\n\n<div  class="containerActividadD" *ngIf=\'ejercicioCompletado\'>\n  <div>\n    <span >{{actividadData.kgFuerza}}</span>\n    <span >Kilogramos/fuerza</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono2.png" >\n  </div>\n</div>\n\n\n<div  class="containerActividadD" *ngIf=\'ejercicioCompletado\'>\n  <div>\n    <span >{{actividadData.calorias}}</span>\n    <span>Calorias perdidas</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono4.png" >\n  </div>\n</div>\n\n\n<div style="text-align:center; margin-top:15px; margin-bottom:30px" *ngIf=\'!ejercicioCompletado\'>\n<button class="btnAzul"  (click)="completarEjercicio()" >Completar ejercicio</button>\n</div>\n\n<div style="text-align:center; margin-top:15px; margin-bottom:30px" *ngIf=\'ejercicioCompletado && proximoEjercicio\'>\n<button class="btnAzul"  (click)="recargarEjercicio()" >Siguiente Ejercicio</button>\n</div>\n\n\n\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/actividad/actividad.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]) === "function" && _g || Object])
     ], ActividadPage);
     return ActividadPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=actividad.js.map

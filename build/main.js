@@ -209,6 +209,16 @@ var ApiProvider = (function () {
             });
         });
     };
+    ApiProvider.prototype.siguienteEjercicioUsuario = function (idUsuario) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.post(_this.api2 + '/siguienteEjercicioUsuario', JSON.stringify({ idUsuario: idUsuario }), { headers: { 'Content-Type': 'application/json' } }).subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                console.log(err);
+            });
+        });
+    };
     ApiProvider.prototype.completarEjercicio = function (idActividad, idR, idUsuario) {
         var _this = this;
         return new Promise(function (resolve) {
