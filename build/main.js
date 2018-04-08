@@ -517,6 +517,8 @@ var MyApp = (function () {
             // Here you can do any higher level native things you might need.
             _this.statusBar.styleDefault();
             _this.splashScreen.hide();
+            var attachFastClick = Origami.fastclick;
+            attachFastClick(document.body);
             _this.apiProvider.verificarLogin()
                 .then(function (data) {
                 console.log(data);
