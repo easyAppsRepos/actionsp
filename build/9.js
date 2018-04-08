@@ -92,7 +92,7 @@ var EscanerPage = (function () {
                 console.log(data.url);
                 var youtubeVideo = data.url.split("v=")[1];
                 //YoutubeVideoPlayer.openVideo(youtubeVideo, function(result) { console.log('YoutubeVideoPlayer result = ' + result); console.log(result);});
-                _this.goVideo(yoyoutubeVideou);
+                _this.goVideo(youtubeVideo);
             }
             else {
                 console.log('errQR');
