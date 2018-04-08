@@ -53,6 +53,22 @@ var ApiProvider = (function () {
             });
         });
     };
+    ApiProvider.prototype.getYoutubeDataVideo = function (videoLink) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.get('https://www.googleapis.com/youtube/v3/videos?id=' + videoLink + '&key=AIzaSyBSJcqdt3hnOf3NYcmiKDAzwEi4lvZxeR8').subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                console.log(err);
+                if (err.url) {
+                    resolve(err);
+                }
+                else {
+                    resolve(null);
+                }
+            });
+        });
+    };
     ApiProvider.prototype.getYoutubeLink = function () {
         var _this = this;
         return new Promise(function (resolve) {

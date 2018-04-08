@@ -75,7 +75,14 @@ var EscanerPage = (function () {
     EscanerPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad EscanerPage');
     };
+    EscanerPage.prototype.goVideo = function (link) {
+        this.apiProvider.getYoutubeDataVideo(link)
+            .then(function (data) {
+            console.log(data);
+        });
+    };
     EscanerPage.prototype.escanearCodigo = function () {
+        var _this = this;
         var loading = this.loadingController.create({ content: "cargando..." });
         loading.present();
         this.apiProvider.getYoutubeLink()
@@ -84,7 +91,8 @@ var EscanerPage = (function () {
             if (data) {
                 console.log(data.url);
                 var youtubeVideo = data.url.split("v=")[1];
-                YoutubeVideoPlayer.openVideo(youtubeVideo, function (result) { console.log('YoutubeVideoPlayer result = ' + result); console.log(result); });
+                //YoutubeVideoPlayer.openVideo(youtubeVideo, function(result) { console.log('YoutubeVideoPlayer result = ' + result); console.log(result);});
+                _this.goVideo(yoyoutubeVideou);
             }
             else {
                 console.log('errQR');
