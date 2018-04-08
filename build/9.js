@@ -87,7 +87,8 @@ var EscanerPage = (function () {
                 YoutubeVideoPlayer.openVideo(youtubeVideo, function (result) { console.log('YoutubeVideoPlayer result = ' + result); console.log(result); });
             }
             else {
-                console.log('err');
+                console.log('errQR');
+                console.log(data);
             }
         });
         /*
