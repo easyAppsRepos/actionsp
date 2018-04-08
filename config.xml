@@ -52,6 +52,20 @@
 
 
 
+<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+    <string>Escanear QR codes</string>
+</edit-config>
+<edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+    <string>Escanear QR codes</string>
+</edit-config>
+<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+    <string>Escanear QR codes</string>
+</edit-config>
+<edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+    <string>Escanear QR codes</string>
+</edit-config>
+
+
 
 <!--   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
@@ -77,9 +91,7 @@
 
   <preference name="YouTubeDataApiKey" value="AIzaSyBSJcqdt3hnOf3NYcmiKDAzwEi4lvZxeR8" />
 
-<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
-    <string>Escanear QR</string>
-</edit-config>
+
 
 <!--   <gap:plugin name="cordova-plugin-camera"  source="npm"  spec="2.4.1" />
   <gap:plugin name="cordova-plugin-file-transfer"  source="npm" spec="1.6.3" />
