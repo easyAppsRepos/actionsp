@@ -116,7 +116,7 @@ var MiRutinaPage = (function () {
     };
     MiRutinaPage.prototype.goActividad = function () {
         //console.log(this.proximoEjercicio.idActividad);
-        this.navCtrl.push('ActividadPage', { idActividad: this.proximoEjercicio.idActividad, idR: this.proximoEjercicio.idRutinaActividad });
+        this.navCtrl.push('ActividadPage', { idActividad: this.proximoEjercicio.idActividad, idR: this.proximoEjercicio.idRutinaActividad, diaNumero: this.proximoEjercicio.diaNumero });
     };
     MiRutinaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({

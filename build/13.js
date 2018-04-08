@@ -81,6 +81,7 @@ var ActividadPage = (function () {
         this.actividadData = {};
         this.proximoEjercicio = {};
         this.ejercicioCompletado = false;
+        this.diaAnterior = '';
         events.subscribe('registrarNuevoEjercicio', function (ejercicioNuevo) {
             _this.proximoEjercicio = ejercicioNuevo;
             console.log(_this.proximoEjercicio);
@@ -109,12 +110,17 @@ var ActividadPage = (function () {
             console.log(data);
             _this.ejercicioCompletado = false;
             _this.actividadData = data[0];
+            if (_this.diaAnterior !== _this.proximoEjercicio.diaNumero) {
+                _this.diaAnterior = _this.proximoEjercicio.diaNumero;
+            }
             loading.dismissAll();
         });
     };
     ActividadPage.prototype.ionViewDidLoad = function () {
         this.proximoEjercicio.idActividad = this.navParams.get('idActividad');
         this.proximoEjercicio.idRutinaActividad = this.navParams.get('idR');
+        this.proximoEjercicio.diaNumero = this.navParams.get('diaNumero');
+        this.diaAnterior = this.navParams.get('diaNumero');
     };
     ActividadPage.prototype.actualizarRutina = function () {
         this.events.publish('updateRutin');
@@ -158,7 +164,7 @@ var ActividadPage = (function () {
                 _this.events.publish('updateRutin');
                 _this.ejercicioCompletado = true;
                 // this.getNuevoEjercicio();
-                _this.presentAlert('Enhorabuena!', 'Has completado el ejercicio');
+                _this.presentAlert('Felicidades!', 'Has completado el ejercicio');
             }
         });
     };
@@ -193,7 +199,7 @@ var ActividadPage = (function () {
     };
     ActividadPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-actividad',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/actividad/actividad.html"*/'<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content   style="background-image: url(\'assets/imgs/bicepFoto.png\');    background-size: cover;" >\n<div [ngClass]="{\'colorVerde\' : ejercicioCompletado, \'colorDark\' : !ejercicioCompletado}" class="capaOscuridad" style="height:140% !important; position:fixed"></div>\n<div  *ngIf=\'actividadData\'>\n	<div style="  text-align: center;\n    color: white;\n    font-size: 65px;\n    font-family: tituloItalic;\n    text-shadow: 2px 4px 3px rgba(0,0,0,0.6);\n    margin-top: 25px;" [innerHtml]="actividadData.nombre">\n		\n	</div>\n<div class="containerActividadD">\n  <div >\n    <span >{{actividadData.cantidadEjercicio}}</span>\n    <span >{{actividadData.etiquetaEjercicio}}</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono1.png">\n  </div>\n</div>\n\n<div  class="containerActividadD" *ngIf=\'!ejercicioCompletado\'>\n  <div>\n    <span >{{actividadData.dificultad}}%</span>\n    <span >Dificultad</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono2.png" >\n  </div>\n</div>\n\n<div  class="containerActividadD" *ngIf=\'ejercicioCompletado\'>\n  <div>\n    <span >{{actividadData.kgFuerza}}</span>\n    <span >Kilogramos/fuerza</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono2.png" >\n  </div>\n</div>\n\n\n<div  class="containerActividadD" *ngIf=\'ejercicioCompletado\'>\n  <div>\n    <span >{{actividadData.calorias}}</span>\n    <span>Calorias perdidas</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono4.png" >\n  </div>\n</div>\n\n\n<div style="text-align:center; margin-top:15px; margin-bottom:30px" *ngIf=\'!ejercicioCompletado\'>\n<button class="btnAzul"  (click)="completarEjercicio()" >Completar ejercicio</button>\n</div>\n\n<div style="text-align:center; margin-top:15px; margin-bottom:30px" *ngIf=\'ejercicioCompletado && proximoEjercicio\'>\n<button class="btnAzul"  (click)="recargarEjercicio()" >Siguiente Ejercicio</button>\n</div>\n\n\n\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/actividad/actividad.html"*/,
+            selector: 'page-actividad',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/actividad/actividad.html"*/'<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content   style="background-image: url(\'assets/imgs/bicepFoto.png\');    background-size: cover;" >\n<div [ngClass]="{\'colorVerde\' : ejercicioCompletado, \'colorDark\' : !ejercicioCompletado}" class="capaOscuridad" style="height:140% !important; position:fixed"></div>\n<div  *ngIf=\'actividadData\'>\n	<div style="  text-align: center;\n    color: white;\n    font-size: 65px;\n    font-family: tituloItalic;\n    text-shadow: 2px 4px 3px rgba(0,0,0,0.6);\n    margin-top: 25px;" [innerHtml]="actividadData.nombre">\n		\n	</div>\n  <div style="color: white;\n    width: 100%;\n    text-align: center;\n    font-family: tituloItalic;\n    font-size: 38px;">Dia {{diaAnterior}}</div>\n<div class="containerActividadD">\n  <div >\n    <span >{{actividadData.cantidadEjercicio}}</span>\n    <span >{{actividadData.etiquetaEjercicio}}</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono1.png">\n  </div>\n</div>\n\n<div  class="containerActividadD" *ngIf=\'!ejercicioCompletado\'>\n  <div>\n    <span >{{actividadData.dificultad}}%</span>\n    <span >Dificultad</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono2.png" >\n  </div>\n</div>\n\n<div  class="containerActividadD" *ngIf=\'ejercicioCompletado\'>\n  <div>\n    <span >{{actividadData.kgFuerza}}</span>\n    <span >Kilogramos/fuerza</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono2.png" >\n  </div>\n</div>\n\n\n<div  class="containerActividadD" *ngIf=\'ejercicioCompletado\'>\n  <div>\n    <span >{{actividadData.calorias}}</span>\n    <span>Calorias perdidas</span>\n  </div>\n  <div >\n    <img src="assets/imgs/icono4.png" >\n  </div>\n</div>\n\n\n<div style="text-align:center; margin-top:15px; margin-bottom:30px" *ngIf=\'!ejercicioCompletado\'>\n<button class="btnAzul"  (click)="completarEjercicio()" >Completar ejercicio</button>\n</div>\n\n<div style="text-align:center; margin-top:15px; margin-bottom:30px" *ngIf=\'ejercicioCompletado && proximoEjercicio\'>\n<button class="btnAzul"  (click)="recargarEjercicio()" >\n\n{{ diaAnterior==proximoEjercicio.diaNumero ? \'Siguiente Ejercicio\' : \'PASAR DE DIA\'}}\n\n</button>\n</div>\n\n\n\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/actividad/actividad.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]) === "function" && _g || Object])
     ], ActividadPage);
