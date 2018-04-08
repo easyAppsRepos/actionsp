@@ -25703,11 +25703,11 @@ ion-navbar.toolbar {
 }
 
 .menuLateral {
-  background-color: #00a5ff;
+  background-color: #4b525a !important;
 }
 
 .toolbar-background {
-  background-color: #00a5ff !important;
+  background-color: #4b525a !important;
 }
 
 .menuIcono {
@@ -25717,7 +25717,7 @@ ion-navbar.toolbar {
 }
 
 .itemMenu {
-  background-color: #00a5ff;
+  background-color: #4b525a !important;
   color: white;
   font-weight: 800;
   border: none !important;
