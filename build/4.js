@@ -1,14 +1,14 @@
 webpackJsonp([4],{
 
-/***/ 291:
+/***/ 295:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MiRutinaPageModule", function() { return MiRutinaPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NovedadesPageModule", function() { return NovedadesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mi_rutina__ = __webpack_require__(304);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__novedades__ = __webpack_require__(309);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MiRutinaPageModule = (function () {
-    function MiRutinaPageModule() {
+var NovedadesPageModule = (function () {
+    function NovedadesPageModule() {
     }
-    MiRutinaPageModule = __decorate([
+    NovedadesPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__mi_rutina__["a" /* MiRutinaPage */],
+                __WEBPACK_IMPORTED_MODULE_2__novedades__["a" /* NovedadesPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__mi_rutina__["a" /* MiRutinaPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__novedades__["a" /* NovedadesPage */]),
             ],
         })
-    ], MiRutinaPageModule);
-    return MiRutinaPageModule;
+    ], NovedadesPageModule);
+    return NovedadesPageModule;
 }());
 
-//# sourceMappingURL=mi-rutina.module.js.map
+//# sourceMappingURL=novedades.module.js.map
 
 /***/ }),
 
-/***/ 304:
+/***/ 309:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MiRutinaPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NovedadesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_api_api__ = __webpack_require__(100);
@@ -61,72 +61,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the MiRutinaPage page.
+ * Generated class for the NovedadesPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var MiRutinaPage = (function () {
-    function MiRutinaPage(navCtrl, navParams, apiProvider, loadingController, events) {
-        var _this = this;
+var NovedadesPage = (function () {
+    function NovedadesPage(navCtrl, navParams, apiProvider, loadingController, events) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.apiProvider = apiProvider;
         this.loadingController = loadingController;
         this.events = events;
-        events.subscribe('updateRutin', function () {
-            _this.apiProvider.verificarLogin()
-                .then(function (data) {
-                _this.apiProvider.getRutinaUsuario(data.idUsuario)
-                    .then(function (data) {
-                    _this.proximoEjercicio = data[1][0];
-                    _this.diasRutina = (Object.values(data[0]));
-                    console.log(_this.diasRutina);
-                    console.log(_this.proximoEjercicio);
-                });
-            });
-        });
+        this.dataNovedades = [];
     }
-    MiRutinaPage.prototype.ionViewDidLoad = function () {
+    NovedadesPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad EstadisticaPage');
+        this.cargarNovedades();
+    };
+    NovedadesPage.prototype.cargarNovedades = function () {
         var _this = this;
-        var loading = this.loadingController.create({ content: "cargando..." });
-        loading.present();
-        this.apiProvider.verificarLogin()
+        this.apiProvider.getNovedades()
             .then(function (data) {
-            _this.apiProvider.getRutinaUsuario(data.idUsuario)
-                .then(function (data) {
-                _this.proximoEjercicio = data[1][0];
-                _this.diasRutina = (Object.values(data[0]));
-                console.log(_this.diasRutina.length);
-                loading.dismissAll();
-                console.log(_this.proximoEjercicio);
-            });
+            // this.proximoEjercicio = data[1][0];
+            // this.diasRutina =  (Object.values(data[0]));
+            console.log(data);
+            _this.dataNovedades = data.data;
+            // console.log(this.proximoEjercicio);
         });
     };
-    MiRutinaPage.prototype.getPorcentaje = function (dia) {
-        var num = 0;
-        dia.forEach(function (item) {
-            if (item.completado) {
-                num++;
-            }
-        });
-        var enviar = ((num * 100) / (dia.length)) + '%';
-        return enviar;
-    };
-    MiRutinaPage.prototype.goActividad = function () {
-        //console.log(this.proximoEjercicio.idActividad);
-        this.navCtrl.push('ActividadPage', { idActividad: this.proximoEjercicio.idActividad, idR: this.proximoEjercicio.idRutinaActividad });
-    };
-    MiRutinaPage = __decorate([
+    NovedadesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-mi-rutina',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/mi-rutina/mi-rutina.html"*/'<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content  style=\'background-color: #c3d7e6\' >\n\n<div class=\'tituloRutina tituloHome\'>MI RUTINA</div>\n<div *ngIf=\'diasRutina?.length == 0 && !proximoEjercicio\'>\n          <div class="sectionHome">\n    <div>\n      <div style="    color: white;\n    font-size: 16px;\n    font-weight: 800;\n        padding-left: 30px;\n    padding-right: 30px;\n    color:#777;\n    padding-top: 42px;\n    padding-bottom: 20px;    font-family: normalL;">Actualmente no tienes una rutina asignada, solicita una ahora mismo y empieza a entrenar! </div>\n      <div style="text-align:center"><div style="  background-color:  #ff4d00;" class=\'masBtn\' >+</div></div>\n    </div>\n  </div>\n\n</div>\n\n<div *ngIf=\'diasRutina\'>\n\n  <div class="sectionHome" *ngIf=\'proximoEjercicio\'>\n    <div style=\'margin-top:7px;background-color: #3ec754\' class="tituloHome">PROXIMO EJERCICIO</div> \n    <div class="bodyHome" tappable (click)="goActividad()">\n      <div class="tituloBold">{{proximoEjercicio?.nombre}}</div>\n      <div style="text-align:center">\n        <div style=\'background-color: #3ec754;\' class=\'masBtn\' >+</div>\n      </div>\n    </div>\n\n  </div>\n\n<!--     <div class="sectionHome" *ngIf=\'!proximoEjercicio && !(diasRutina?.length == 0)\'>\n    <div style=\'padding-left:20px; padding-right:20px;font-size:16px !important;margin-top:7px;background-color: #3ec754\' class="tituloHome">Enhorabuena! Has finalizado la rutina de esta semana</div> \n  </div>\n -->\n\n\n<div class="diaContainer" *ngFor="let dia of diasRutina;let i = index" >\n		<span class="diaTitulo" >DIA {{i+1}}</span>\n		<div style="\n    width:  100%;\n    height: 100%;\n    background: #ff4d00;\n    position: absolute;\n    top: 0;\n    z-index:  -1;\n    opacity: 0.66;\n"></div>\n		<div  [ngStyle]="{\'width\': getPorcentaje(dia)}" style="\n    \n    height: 100%;\n    background: #3ec754;\n    position: absolute;\n    top: 0;\n    z-index: -1;\n"></div>\n</div>\n\n\n\n<!-- \n<div class="diaContainer">\n		<span  class="diaTitulo">MARTES</span>\n		<div style="\n    width:  100%;\n    height: 100%;\n    background: #ff4d00;\n    position: absolute;\n    top: 0;\n    z-index:  -1;\n    opacity: 0.66;\n"></div>\n</div>\n\n\n<div class="diaContainer">\n		<span class="diaTitulo">MIERCOLES</span>\n		<div style="\n    width:  100%;\n    height: 100%;\n    background: #ff4d00;\n    position: absolute;\n    top: 0;\n    z-index:  -1;\n    opacity: 0.66;\n"></div>\n\n</div> -->\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/mi-rutina/mi-rutina.html"*/,
+            selector: 'page-novedades',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/novedades/novedades.html"*/'<!--\n\n\n  Generated template for the EstadisticaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content   style=\'background-color: #c3d7e6\' >\n\n\n<div class="tituloHome" style="background-color:#6d22d2 !important; text-align:center">NOVEDADES</div>\n\n\n<div style="\n    padding: 20px;\n    border: solid 3px #cccccc;\n    background-color:  white;\n    margin: 27px;\n" *ngFor="let n of dataNovedades">\n<p class="novedadesTitulo">{{n.titulo}}</p>\n<img src="assets/imgs/cinta1.png">\n<p style="\n    color:  #2f2f2f;\n    font-size: 16px;\n    line-height: 20px;\n">{{n.descripcion}}</p>\n</div>\n\n\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/novedades/novedades.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]])
-    ], MiRutinaPage);
-    return MiRutinaPage;
+    ], NovedadesPage);
+    return NovedadesPage;
 }());
 
-//# sourceMappingURL=mi-rutina.js.map
+//# sourceMappingURL=novedades.js.map
 
 /***/ })
 

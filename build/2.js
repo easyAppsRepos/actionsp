@@ -1,14 +1,14 @@
 webpackJsonp([2],{
 
-/***/ 295:
+/***/ 293:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NuevoSocioPageModule", function() { return NuevoSocioPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PerfilPageModule", function() { return PerfilPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nuevo_socio__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__perfil__ = __webpack_require__(307);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var NuevoSocioPageModule = (function () {
-    function NuevoSocioPageModule() {
+var PerfilPageModule = (function () {
+    function PerfilPageModule() {
     }
-    NuevoSocioPageModule = __decorate([
+    PerfilPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__nuevo_socio__["a" /* NuevoSocioPage */],
+                __WEBPACK_IMPORTED_MODULE_2__perfil__["a" /* PerfilPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__nuevo_socio__["a" /* NuevoSocioPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__perfil__["a" /* PerfilPage */]),
             ],
         })
-    ], NuevoSocioPageModule);
-    return NuevoSocioPageModule;
+    ], PerfilPageModule);
+    return PerfilPageModule;
 }());
 
-//# sourceMappingURL=nuevo-socio.module.js.map
+//# sourceMappingURL=perfil.module.js.map
 
 /***/ }),
 
-/***/ 308:
+/***/ 307:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NuevoSocioPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PerfilPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_api_api__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_api_api__ = __webpack_require__(100);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -65,47 +64,63 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
 /**
- * Generated class for the NuevoSocioPage page.
+ * Generated class for the PerfilPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var NuevoSocioPage = (function () {
-    function NuevoSocioPage(navCtrl, navParams, apiProvider, viewCtrl, loadingController, alertCtrl, formBuilder, modalCtrl, storage, events) {
+var PerfilPage = (function () {
+    function PerfilPage(navCtrl, navParams, storage, events, apiProvider, loadingController, modalCtrl, alertCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.apiProvider = apiProvider;
-        this.viewCtrl = viewCtrl;
-        this.loadingController = loadingController;
-        this.alertCtrl = alertCtrl;
-        this.formBuilder = formBuilder;
-        this.modalCtrl = modalCtrl;
         this.storage = storage;
         this.events = events;
-        this.slideOneForm = formBuilder.group({
-            firstName: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].maxLength(10), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].pattern('^[0-9]{1,45}$'), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required])],
-            lastName: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].maxLength(10), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].pattern('^[0-9]{1,45}$'), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required])]
-        });
+        this.apiProvider = apiProvider;
+        this.loadingController = loadingController;
+        this.modalCtrl = modalCtrl;
+        this.alertCtrl = alertCtrl;
     }
-    NuevoSocioPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad NuevoSocioPage');
+    PerfilPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad PerfilPage');
+        this.getUserData();
     };
-    NuevoSocioPage.prototype.closeModal = function () {
-        this.viewCtrl.dismiss();
+    PerfilPage.prototype.getUserData = function () {
+        var _this = this;
+        this.apiProvider.verificarLogin()
+            .then(function (data) {
+            console.log(data);
+            data ? _this.userProfile = data : _this.openModal();
+        });
     };
-    NuevoSocioPage = __decorate([
+    PerfilPage.prototype.goRutinaP = function () {
+        if (this.userProfile) {
+            this.navCtrl.setRoot('MiRutinaPage');
+        }
+        else {
+            this.openModalLogin();
+        }
+    };
+    PerfilPage.prototype.openModal = function () {
+        var data = { message: 'hello world' };
+        var modalPage = this.modalCtrl.create('LoginPage', data);
+        modalPage.present();
+    };
+    PerfilPage.prototype.cerrarSesion = function () {
+        this.storage.set("usr_tok_datagym", undefined);
+        this.events.publish('userLogout');
+        this.navCtrl.setRoot('InicioPage');
+    };
+    PerfilPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-nuevo-socio',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/nuevo-socio/nuevo-socio.html"*/'<!--\n  Generated template for the NuevoSocioPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Registro</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n\n\n\n  <button style="position: absolute;\n    top: 0;\n    left: 0;\n    height: 50px;\n    width: 50px;\n    font-size: 40px;\n    padding: 0px;\n    background-color: transparent;\n    border: none;\n    color: white;" ion-button icon-close (click)="closeModal()">\n  <ion-icon name="close"></ion-icon>\n  \n</button>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/nuevo-socio/nuevo-socio.html"*/,
+            selector: 'page-perfil',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/perfil/perfil.html"*/'<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content  style="background-image: url(\'assets/imgs/fondoPerfil.png\');    background-size: cover;">\n\n<div style="text-align:center">\n <img style=\'border-radius: 100%;\n    width: 150px;\n    margin-top: 20px;\n    margin-bottom: 11px;\n    box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);\' src="assets/imgs/profile.png"> \n <div style="    color: white;\n    font-size: 29px;\n      font-family: normalL;">{{userProfile?.nombre}}</div>\n</div>\n\n  <div style="margin-top:30px;    font-family: normalIt;">\n      <div class="profileEtiq" style="margin-top:12px;text-align:center !important">\n        <div style="font-size: 18px !important;">Socio N</div>\n        <div style="font-size: 30px !important;">{{userProfile?.numeroSocio}}</div>\n      </div>\n\n            <div class="profileEtiq" style="margin-top:12px; text-align:center !important">\n        <div style="font-size: 18px !important;">Edad</div>\n        <div style="font-size: 30px !important;">{{userProfile?.edad || \'-\'}}</div>\n      </div>\n\n            <div class="profileEtiq" style="margin-top:12px;text-align:center !important">\n        <div style="font-size: 18px !important;">Personal Trainer</div>\n        <div style="font-size: 30px !important;">German</div>\n      </div>\n\n\n  </div>\n\n<div style="text-align:center">\n	<button style="    padding-left: 70px;\n    padding-right: 70px;" class="btnAzul" (click)=\'goRutinaP()\'>MI RUTINA</button>\n</div>\n\n\n<div style="    text-align: center;\n    text-decoration: underline;\n    color: white;\n    margin-top: 30px;\n    font-size: 20px;\n    font-family: normalL; " (click)="cerrarSesion()">Cerrar sesion</div>\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/perfil/perfil.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]])
-    ], NuevoSocioPage);
-    return NuevoSocioPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */], __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+    ], PerfilPage);
+    return PerfilPage;
 }());
 
-//# sourceMappingURL=nuevo-socio.js.map
+//# sourceMappingURL=perfil.js.map
 
 /***/ })
 

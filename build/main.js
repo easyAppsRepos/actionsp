@@ -1,4 +1,4 @@
-webpackJsonp([13],{
+webpackJsonp([14],{
 
 /***/ 100:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -230,10 +230,9 @@ var ApiProvider = (function () {
     };
     ApiProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
     ], ApiProvider);
     return ApiProvider;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=api.js.map
@@ -262,54 +261,58 @@ webpackEmptyAsyncContext.id = 113;
 
 var map = {
 	"../pages/actividad/actividad.module": [
+		284,
+		13
+	],
+	"../pages/clase/clase.module": [
 		285,
 		12
 	],
-	"../pages/clase/clase.module": [
-		284,
-		11
-	],
 	"../pages/equipamento/equipamento.module": [
-		287,
-		10
+		288,
+		11
 	],
 	"../pages/escaner/escaner.module": [
 		286,
-		9
+		10
 	],
 	"../pages/estadistica/estadistica.module": [
-		288,
-		8
+		287,
+		9
 	],
 	"../pages/horarios/horarios.module": [
 		289,
-		7
+		8
 	],
 	"../pages/inicio/inicio.module": [
 		290,
-		6
+		7
 	],
 	"../pages/login/login.module": [
+		291,
+		6
+	],
+	"../pages/mi-rutina/mi-rutina.module": [
 		292,
 		5
 	],
-	"../pages/mi-rutina/mi-rutina.module": [
-		291,
+	"../pages/novedades/novedades.module": [
+		295,
 		4
 	],
-	"../pages/novedades/novedades.module": [
-		293,
+	"../pages/nuevo-socio/nuevo-socio.module": [
+		294,
 		3
 	],
-	"../pages/nuevo-socio/nuevo-socio.module": [
-		295,
+	"../pages/perfil/perfil.module": [
+		293,
 		2
 	],
-	"../pages/perfil/perfil.module": [
-		294,
+	"../pages/reservar/reservar.module": [
+		297,
 		1
 	],
-	"../pages/reservar/reservar.module": [
+	"../pages/youtubevide/youtubevide.module": [
 		296,
 		0
 	]
@@ -400,18 +403,19 @@ var AppModule = (function () {
                     backButtonText: ''
                 }, {
                     links: [
-                        { loadChildren: '../pages/clase/clase.module#ClasePageModule', name: 'ClasePage', segment: 'clase', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/actividad/actividad.module#ActividadPageModule', name: 'ActividadPage', segment: 'actividad', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/clase/clase.module#ClasePageModule', name: 'ClasePage', segment: 'clase', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/escaner/escaner.module#EscanerPageModule', name: 'EscanerPage', segment: 'escaner', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/equipamento/equipamento.module#EquipamentoPageModule', name: 'EquipamentoPage', segment: 'equipamento', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/estadistica/estadistica.module#EstadisticaPageModule', name: 'EstadisticaPage', segment: 'estadistica', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/equipamento/equipamento.module#EquipamentoPageModule', name: 'EquipamentoPage', segment: 'equipamento', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/horarios/horarios.module#HorariosPageModule', name: 'HorariosPage', segment: 'horarios', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/inicio/inicio.module#InicioPageModule', name: 'InicioPage', segment: 'inicio', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/mi-rutina/mi-rutina.module#MiRutinaPageModule', name: 'MiRutinaPage', segment: 'mi-rutina', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/novedades/novedades.module#NovedadesPageModule', name: 'NovedadesPage', segment: 'novedades', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/mi-rutina/mi-rutina.module#MiRutinaPageModule', name: 'MiRutinaPage', segment: 'mi-rutina', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/perfil/perfil.module#PerfilPageModule', name: 'PerfilPage', segment: 'perfil', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/nuevo-socio/nuevo-socio.module#NuevoSocioPageModule', name: 'NuevoSocioPage', segment: 'nuevo-socio', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/novedades/novedades.module#NovedadesPageModule', name: 'NovedadesPage', segment: 'novedades', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/youtubevide/youtubevide.module#YoutubevidePageModule', name: 'YoutubevidePage', segment: 'youtubevide', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reservar/reservar.module#ReservarPageModule', name: 'ReservarPage', segment: 'reservar', priority: 'low', defaultHistory: [] }
                     ]
                 }),

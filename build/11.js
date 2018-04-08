@@ -1,14 +1,14 @@
 webpackJsonp([11],{
 
-/***/ 284:
+/***/ 288:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClasePageModule", function() { return ClasePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EquipamentoPageModule", function() { return EquipamentoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__clase__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__equipamento__ = __webpack_require__(302);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ClasePageModule = (function () {
-    function ClasePageModule() {
+var EquipamentoPageModule = (function () {
+    function EquipamentoPageModule() {
     }
-    ClasePageModule = __decorate([
+    EquipamentoPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__clase__["a" /* ClasePage */],
+                __WEBPACK_IMPORTED_MODULE_2__equipamento__["a" /* EquipamentoPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__clase__["a" /* ClasePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__equipamento__["a" /* EquipamentoPage */]),
             ],
         })
-    ], ClasePageModule);
-    return ClasePageModule;
+    ], EquipamentoPageModule);
+    return EquipamentoPageModule;
 }());
 
-//# sourceMappingURL=clase.module.js.map
+//# sourceMappingURL=equipamento.module.js.map
 
 /***/ }),
 
-/***/ 297:
+/***/ 302:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClasePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EquipamentoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_api_api__ = __webpack_require__(100);
@@ -59,50 +59,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
- * Generated class for the ClasePage page.
+ * Generated class for the EquipamentoPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var ClasePage = (function () {
-    function ClasePage(navCtrl, navParams, apiProvider, loadingController) {
+var EquipamentoPage = (function () {
+    function EquipamentoPage(navCtrl, navParams, apiProvider, loadingController, events) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.apiProvider = apiProvider;
         this.loadingController = loadingController;
-        this.claseData = {};
+        this.events = events;
+        this.dataEquipamento = [];
     }
-    ClasePage.prototype.verificarReserva = function (idClase, idUsuario) {
-        return this.apiProvider.verificarReserva(idClase, idUsuario)
+    EquipamentoPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad cargarEquipamento');
+        this.cargarEquipamento();
+    };
+    EquipamentoPage.prototype.cargarEquipamento = function () {
+        var _this = this;
+        this.apiProvider.getEquipamento()
             .then(function (data) {
             console.log(data);
+            _this.dataEquipamento = data.data;
         });
     };
-    ClasePage.prototype.ionViewDidLoad = function () {
-        this.claseData = this.navParams.data;
-        console.log(this.claseData);
-    };
-    ClasePage.prototype.goReservar = function () {
-        this.navCtrl.push('ReservarPage');
-    };
-    ClasePage.prototype.goTodasClases = function () {
-        var loading = this.loadingController.create({ content: "cargando..." });
-        loading.present();
-        this.verificarReserva(this.claseData.idClase, 1).then(function () {
-            loading.dismissAll();
-        });
-    };
-    ClasePage = __decorate([
+    EquipamentoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-clase',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/clase/clase.html"*/'<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content style=\'background-color: #c3d7e6\' >\n<div class="capaOscuridad" style="z-index:0 !important;height: 90% !important;     background-color: black !important;"></div>\n	<div style="    background-image: url(assets/imgs/claseFo.png);\n    background-size: cover;\n    width: 100%;\n    z-index:-1 !important;\n    height: 90%;">\n    	<div style="    text-align: center;\n    font-size: 60px;\n    font-weight: 800;\n    color: white;\n    padding-top: 30%;\n    font-family: tituloItalic;\n    position: absolute;\n    width: 100%;"  [innerHtml]="claseData.nombre" ></div>\n    	<div style="    text-align: center;\n    padding-top: calc(40% + 65px);\n    position: absolute;\n    width: 100%;">\n<!-- \n    <button class="btnRosa"  (click)="goReservar()"  >RESERVAR</button> -->\n\n    	</div>\n\n    	<div style="display:table; width:100%  ;  position: absolute;\n    bottom: 12%;">\n    		<div style="    display: table-cell;\n    text-align: center;">\n    			<img src="assets/imgs/imagenCuerpo.png" style="height: 170px;    padding: 0px 20px;">\n    		</div>\n    		<div style="    display: table-cell;\n    vertical-align: top;\n    color: white;\n    font-size: 21px;font-family: normalL;\n    padding-right: 25px;">\n    			<div class="itemClase">\n    				<div>Duracion: {{claseData.duracionMinutos}}</div>\n    				<div>\n            \n                <div class="barraRelleno" style="    width: 70%;"></div>            \n                    </div>\n    			</div>\n    			<div class="itemClase">\n    				<div>Beneficio: {{claseData.beneficio}}</div>\n    				<div>\n            <div class="barraRelleno" style="    width: 20%;"></div>              \n                    </div>\n    			</div>\n    			<div class="itemClase">\n    				<div>Calorias: {{claseData.calorias}} aprox.</div>\n    				<div>\n            <div class="barraRelleno" style="    width: 50%;"></div>              \n                    </div>\n    			</div>\n    			<div class="itemClase">\n    				<div>Dificultad: {{claseData.dificultad}} %</div>\n    				<div>\n            <div class="barraRelleno" style="    width: 90%;"></div>              \n                    </div>\n    			</div>\n    		</div>\n\n    	</div>\n    	\n\n\n    </div>\n\n\n    <div style="text-align:center">\n	<button class="btnAzul" (click)=\'goReservar()\'>RESERVAR UNA CLASE</button>\n	</div>\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/clase/clase.html"*/,
+            selector: 'page-equipamento',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/equipamento/equipamento.html"*/'<!--\n\n\n  Generated template for the EstadisticaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content   style=\'background-color: #c3d7e6\' >\n\n\n<div class="tituloHome"  style="background-color:#3ec754 !important; text-align:center ">EQUIPAMENTO</div>\n\n    <div style="width:100%;    display: table; table-layout: fixed;" *ngFor="let e of dataEquipamento; let i = index">\n      <div [style.backgroundColor]="i%2 !== 0 ? \'#d2dade\' : \'white\'" style=" display: table-cell;\n    vertical-align: top;\n\n    padding-top: 13px;\n       text-align: center;\n       color: #2f2f2f;\n    font-size: 13px;        width: 36%;">\n      <img style=\'    width: 70px;\n    padding-bottom: 10px;\' src="assets/imgs/maquina1.png">\n      </div>\n      <div   [style.backgroundColor]="i%2 == 0 ? \'#d2dade\' : \'white\'" class="maquinaData">\n            <div style="    font-size: 23px;\n    color: #4c4c4c;\n    ">{{e.nombre}}</div>\n            <div style="\n            font-size: 18px;\n    color: #5a5c5d;\n    ">{{e.item1}}</div>\n                <div style="\n            font-size: 18px;\n    color: #5a5c5d;\n    ">{{e.item2}}</div>\n                <div style="\n            font-size: 18px;\n    color: #5a5c5d;\n    ">{{e.item3}}</div>\n\n\n<div style="background-color: #3ec754;" class=\'masBtn maquinabtn\'>+</div>\n\n\n          </div>\n    </div>\n\n\n\n\n\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/equipamento/equipamento.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
-    ], ClasePage);
-    return ClasePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]])
+    ], EquipamentoPage);
+    return EquipamentoPage;
 }());
 
-//# sourceMappingURL=clase.js.map
+//# sourceMappingURL=equipamento.js.map
 
 /***/ })
 
