@@ -26138,6 +26138,18 @@ page-equipamento .maquinaData {
   text-align: center;
 }
 
+.alertData {
+  width: 100%;
+  text-align: left !important;
+  margin-left: 25px;
+}
+
+.completado {
+  height: 18px;
+  vertical-align: top;
+  margin-left: 10px;
+}
+
 .proxEjercicio {
   background-color: #3ec754;
   text-align: center;
