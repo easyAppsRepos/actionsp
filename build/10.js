@@ -84,50 +84,42 @@ var EscanerPage = (function () {
         });
     };
     EscanerPage.prototype.escanearCodigo = function () {
-        var _this = this;
         var loading = this.loadingController.create({ content: "cargando..." });
         loading.present();
-        this.apiProvider.getYoutubeLink()
-            .then(function (data) {
-            loading.dismissAll();
-            if (data) {
-                console.log(data.url);
-                var youtubeVideo = data.url.split("v=")[1];
-                //YoutubeVideoPlayer.openVideo(youtubeVideo, function(result) { console.log('YoutubeVideoPlayer result = ' + result); console.log(result);});
-                _this.goVideo(youtubeVideo);
-            }
-            else {
-                console.log('errQR');
-                console.log(data);
-            }
+        console.log('escanearCodigo');
+        cordova.plugins.barcodeScanner.scan(function (result) {
+            var _this = this;
+            console.log(result);
+            //var ref = cordova.InAppBrowser.open(result.text, '_system', 'location=yes');
+            this.apiProvider.getYoutubeLink(result.text)
+                .then(function (data) {
+                loading.dismissAll();
+                if (data) {
+                    console.log(data.url);
+                    var youtubeVideo = data.url.split("v=")[1];
+                    //YoutubeVideoPlayer.openVideo(youtubeVideo, function(result) { console.log('YoutubeVideoPlayer result = ' + result); console.log(result);});
+                    _this.goVideo(youtubeVideo);
+                }
+                else {
+                    console.log('errQR');
+                    console.log(data);
+                }
+            });
+        }, function (error) {
+            alert("Ups, ha ocurrido un error: " + error);
+        }, {
+            preferFrontCamera: true,
+            showFlipCameraButton: true,
+            showTorchButton: true,
+            torchOn: true,
+            saveHistory: true,
+            prompt: "Place a barcode inside the scan area",
+            resultDisplayDuration: 500,
+            formats: "QR_CODE,PDF_417",
+            orientation: "landscape",
+            disableAnimations: true,
+            disableSuccessBeep: false // iOS and Android
         });
-        /*
-            console.log('escanearCodigo');
-        
-               cordova.plugins.barcodeScanner.scan(
-              function (result) {
-              console.log(result);
-              var ref = cordova.InAppBrowser.open(result.text, '_system', 'location=yes');
-              },
-              function (error) {
-                  alert("Scanning failed: " + error);
-              },
-              {
-        
-                  preferFrontCamera : true, // iOS and Android
-                  showFlipCameraButton : true, // iOS and Android
-                  showTorchButton : true, // iOS and Android
-                  torchOn: true, // Android, launch with the torch switched on (if available)
-                  saveHistory: true, // Android, save scan history (default false)
-                  prompt : "Place a barcode inside the scan area", // Android
-                  resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
-                  formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-                  orientation : "landscape", // Android only (portrait|landscape), default unset
-                  disableAnimations : true, // iOS
-                  disableSuccessBeep: false // iOS and Android
-              }
-           );
-        */
     };
     EscanerPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
