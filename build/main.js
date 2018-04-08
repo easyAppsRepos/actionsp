@@ -411,8 +411,14 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_9__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {
+                    menuType: 'overlay',
                     tabsPlacement: 'top',
-                    backButtonText: ''
+                    backButtonText: '',
+                    platforms: {
+                        ios: {
+                            menuType: 'overlay',
+                        }
+                    }
                 }, {
                     links: [
                         { loadChildren: '../pages/actividad/actividad.module#ActividadPageModule', name: 'ActividadPage', segment: 'actividad', priority: 'low', defaultHistory: [] },
@@ -517,8 +523,6 @@ var MyApp = (function () {
             // Here you can do any higher level native things you might need.
             _this.statusBar.styleDefault();
             _this.splashScreen.hide();
-            var attachFastClick = Origami.fastclick;
-            attachFastClick(document.body);
             _this.apiProvider.verificarLogin()
                 .then(function (data) {
                 console.log(data);
