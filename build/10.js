@@ -98,8 +98,7 @@ var EscanerPage = (function () {
                     console.log(data);
                     //console.log(data.url);
                     // var youtubeVideo = data.url.split("v=")[1];
-                    var t = data.match(new RegExp("video_id=(.*)\\"));
-                    console.log(t);
+                    var youtubeVideo = data.split('video_id=')[1].split('\\')[0];
                     //YoutubeVideoPlayer.openVideo(youtubeVideo, function(result) { console.log('YoutubeVideoPlayer result = ' + result); console.log(result);});
                     me.goVideo(youtubeVideo);
                 }
