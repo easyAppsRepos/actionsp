@@ -71,16 +71,16 @@ var EscanerPage = (function () {
         this.navParams = navParams;
         this.apiProvider = apiProvider;
         this.loadingController = loadingController;
+        this.self = this;
     }
     EscanerPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad EscanerPage');
     };
     EscanerPage.prototype.goVideo = function (link) {
-        var _this = this;
-        this.apiProvider.getYoutubeDataVideo(link)
+        self.apiProvider.getYoutubeDataVideo(link)
             .then(function (data) {
             console.log(data.items[0]);
-            _this.navCtrl.push('YoutubevidePage', data.items[0]);
+            self.navCtrl.push('YoutubevidePage', data.items[0]);
         });
     };
     EscanerPage.prototype.escanearCodigo = function () {
@@ -88,17 +88,16 @@ var EscanerPage = (function () {
         loading.present();
         console.log('escanearCodigo');
         cordova.plugins.barcodeScanner.scan(function (result) {
-            var _this = this;
             console.log(result);
             //var ref = cordova.InAppBrowser.open(result.text, '_system', 'location=yes');
-            this.apiProvider.getYoutubeLink(result.text)
+            self.apiProvider.getYoutubeLink(result.text)
                 .then(function (data) {
                 loading.dismissAll();
                 if (data) {
                     console.log(data.url);
                     var youtubeVideo = data.url.split("v=")[1];
                     //YoutubeVideoPlayer.openVideo(youtubeVideo, function(result) { console.log('YoutubeVideoPlayer result = ' + result); console.log(result);});
-                    _this.goVideo(youtubeVideo);
+                    self.goVideo(youtubeVideo);
                 }
                 else {
                     console.log('errQR');
