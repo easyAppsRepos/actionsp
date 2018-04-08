@@ -92,8 +92,15 @@
 <gap:plugin name="cordova-plugin-inappbrowser" source="npm"  />
 
 
-<!-- add a version here, otherwise PGB will use whatever the latest version of the package on npm is -->
+
+<!-- add a version here, otherwise PGB will use whatever the latest version of the package on npm is \
+
+<gap:plugin name="cordova-plugin-youtube-video-player" source="npm"  />
+-->
 <plugin name="phonegap-plugin-barcodescanner" />
+
+
+
 
        <access origin="*" />
 <allow-intent href="*" />
