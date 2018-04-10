@@ -1,14 +1,14 @@
 webpackJsonp([10],{
 
-/***/ 286:
+/***/ 290:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EscanerPageModule", function() { return EscanerPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EstadisticaPageModule", function() { return EstadisticaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__escaner__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__estadistica__ = __webpack_require__(305);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EscanerPageModule = (function () {
-    function EscanerPageModule() {
+var EstadisticaPageModule = (function () {
+    function EstadisticaPageModule() {
     }
-    EscanerPageModule = __decorate([
+    EstadisticaPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__escaner__["a" /* EscanerPage */],
+                __WEBPACK_IMPORTED_MODULE_2__estadistica__["a" /* EstadisticaPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__escaner__["a" /* EscanerPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__estadistica__["a" /* EstadisticaPage */]),
             ],
         })
-    ], EscanerPageModule);
-    return EscanerPageModule;
+    ], EstadisticaPageModule);
+    return EstadisticaPageModule;
 }());
 
-//# sourceMappingURL=escaner.module.js.map
+//# sourceMappingURL=estadistica.module.js.map
 
 /***/ }),
 
-/***/ 300:
+/***/ 305:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EscanerPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EstadisticaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_api_api__ = __webpack_require__(100);
@@ -59,89 +59,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
- * Generated class for the EscanerPage page.
+ * Generated class for the EstadisticaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var EscanerPage = (function () {
-    function EscanerPage(navCtrl, navParams, apiProvider, loadingController) {
+var EstadisticaPage = (function () {
+    function EstadisticaPage(navCtrl, navParams, apiProvider, loadingController, events) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.apiProvider = apiProvider;
         this.loadingController = loadingController;
+        this.events = events;
+        this.dataEstadistica = {};
     }
-    EscanerPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad EscanerPage');
+    EstadisticaPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad EstadisticaPage');
+        this.cargarEstadistica();
     };
-    EscanerPage.prototype.goVideo = function (link) {
+    EstadisticaPage.prototype.cargarEstadistica = function () {
         var _this = this;
-        this.apiProvider.getYoutubeDataVideo(link)
+        this.apiProvider.verificarLogin()
             .then(function (data) {
-            console.log(data.items[0]);
-            _this.navCtrl.push('YoutubevidePage', data.items[0]);
-        });
-    };
-    EscanerPage.prototype.escanearCodigo = function () {
-        var me = this;
-        var loading = me.loadingController.create({ content: "cargando..." });
-        loading.present();
-        console.log('escanearCodigo');
-        cordova.plugins.barcodeScanner.scan(function (result) {
-            console.log(result);
-            //var ref = cordova.InAppBrowser.open(result.text, '_system', 'location=yes');
-            me.apiProvider.getYoutubeLink(result.text)
+            _this.apiProvider.getEstadistica(data.idUsuario)
                 .then(function (data) {
-                loading.dismissAll();
-                if (data) {
-                    console.log(data);
-                    //console.log(data.url);
-                    // var youtubeVideo = data.url.split("v=")[1];
-                    try {
-                        var youtubeVideo = data.split('href="https://www.youtube.com/watch?v=')[1].split('">')[0];
-                    }
-                    catch (err) {
-                        alert('QR invalido');
-                        return false;
-                    }
-                    //YoutubeVideoPlayer.openVideo(youtubeVideo, function(result) { console.log('YoutubeVideoPlayer result = ' + result); console.log(result);});
-                    me.goVideo(youtubeVideo);
-                }
-                else {
-                    console.log('errQR');
-                    console.log(data);
-                }
+                // this.proximoEjercicio = data[1][0];
+                // this.diasRutina =  (Object.values(data[0]));
+                console.log(data);
+                _this.dataEstadistica = data.data[0];
+                // console.log(this.proximoEjercicio);
             });
-        }, function (error) {
-            console.log("Ups, ha ocurrido un error: ");
-            console.log(error);
-            loading.dismissAll();
-        }, {
-            preferFrontCamera: true,
-            showFlipCameraButton: true,
-            showTorchButton: true,
-            torchOn: true,
-            saveHistory: true,
-            prompt: "Coloca el QR de la maquina dentro del recuadro",
-            resultDisplayDuration: 500,
-            formats: "QR_CODE,PDF_417",
-            orientation: "landscape",
-            disableAnimations: true,
-            disableSuccessBeep: false // iOS and Android
         });
     };
-    EscanerPage = __decorate([
+    EstadisticaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-escaner',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/escaner/escaner.html"*/'<!--\n\n\n  Generated template for the EstadisticaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content   style=\'background-color: #c3d7e6\' >\n\n\n<div class=\'tituloHome\' style="background-color:#009a00 !important;text-align:center;">ESCANEAR QR</div>\n\n\n\n<div style="text-align: center;\n    font-size: 22px;\n    padding: 38px;\n    font-family: normalL;\n    color: #444;">Acercate a una maquina  y escanea el codigo QR</div>\n\n<div style="\n    text-align: center;\n"> <img src="assets/imgs/qr.png" style="\n    max-width: 295px;\n    width: 65% !important;\n"> </div>\n\n\n<div style="text-align:center"><button (click)=\'escanearCodigo()\' class="btnAzul">ESCANEAR</button></div>\n\n\n<!-- \n          <ion-item>\n                <div class="video-container">\n                    <iframe src="https://lfconnect.com/q?t=s&m=sshad" frameborder="0" width="560" height="315"></iframe>\n                </div>\n            </ion-item> -->\n\n            \n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/escaner/escaner.html"*/,
+            selector: 'page-estadistica',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/estadistica/estadistica.html"*/'<!--\n\n\n  Generated template for the EstadisticaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <button style=\'color:white\' ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoFinal.png"> \n  </ion-navbar>\n</ion-header>\n\n<ion-content   style=\'background-color: #c3d7e6\' >\n\n\n<div class="tituloHome" style="background-color:#00d3d4 !important; text-align:center">MI PROGRESO</div>\n	<div style="text-align: center;\n    color: white;\n    font-size: 37px;\n    margin-top: 20px;\n    margin-bottom: 35px;\n    font-family: tituloHItalic;\n    text-shadow: 2px 4px 3px rgba(0,0,0,0.6);">\n		Llevas quemadas\n	</div>\n<div style=\'text-align: center;    position: relative;\' >\n<div style="    font-size: 42px;\n    color: white;\n    position: absolute;\n    bottom: 43%;\n    left: calc(50% - 79px);\n    line-height: 38px;\n    font-family: tituloHItalic;\n    text-shadow: 2px 4px 3px rgba(0,0,0,0.6);">{{dataEstadistica.calorias || 0}} <br> calorias</div>\n<img style=\'width: 80%;    max-width: 400px;\' src="assets/imgs/estArco.png">\n\n</div>\n\n<div style="    text-align: center;\n    display: table;\n    width: 100%;\n    padding-left: 5%;\n    padding-right: 5%;\n    margin-top: 40px;    margin-bottom: 40px;">\n	\n	<div class="estadisticaItem">\n		<img src="assets/imgs/est1.png">\n		<div><b>Fuerza</b></div>\n		<div>{{dataEstadistica.fuerza || 0}} Kg/F</div>\n	</div>\n\n	<div class="estadisticaItem">\n		<img src="assets/imgs/est2.png">\n		<div><b>Tiempo</b></div>\n		<div>{{(dataEstadistica.minutos/60).toFixed(2) || 0}}hrs</div>\n	</div>\n\n	<div class="estadisticaItem">\n		<img src="assets/imgs/est3.png">\n		<div><b>Calorias</b></div>\n		<div>{{dataEstadistica.calorias || 0}}Kc</div>\n	</div>\n\n\n\n\n\n\n</div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/estadistica/estadistica.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _d || Object])
-    ], EscanerPage);
-    return EscanerPage;
-    var _a, _b, _c, _d;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]])
+    ], EstadisticaPage);
+    return EstadisticaPage;
 }());
 
-//# sourceMappingURL=escaner.js.map
+//# sourceMappingURL=estadistica.js.map
 
 /***/ })
 

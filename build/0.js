@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 296:
+/***/ 298:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "YoutubevidePageModule", function() { return YoutubevidePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__youtubevide__ = __webpack_require__(310);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__youtubevide__ = __webpack_require__(313);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var YoutubevidePageModule = (function () {
 
 /***/ }),
 
-/***/ 310:
+/***/ 313:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80,12 +80,11 @@ var YoutubevidePage = (function () {
     };
     YoutubevidePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-youtubevide',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/youtubevide/youtubevide.html"*/'<!--\n  Generated template for the YoutubevidePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoAmarillo.png"> \n  </ion-navbar>\n</ion-header>\n\n\n<ion-content    style=\'background-color: #c3d7e6\' >\n\n\n<div class=\'tituloHome\' style="background-color:#868686 !important;text-align:center;">INSTRUCCIONES DE USO</div>\n\n<div padding>\n\n  \n  <iframe width="100%" height="300px" [src]="video.url"  frameborder="30" allowfullscreen></iframe>\n\n  <p style="color: #444;">{{video.data?.title || ""}}</p>\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/youtubevide/youtubevide.html"*/,
+            selector: 'page-youtubevide',template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/pages/youtubevide/youtubevide.html"*/'<!--\n  Generated template for the YoutubevidePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <img style=\'    height: 30px; float: right;margin-right: 15px;\' src="assets/imgs/logoFinal.png"> \n  </ion-navbar>\n</ion-header>\n\n\n<ion-content    style=\'background-color: #c3d7e6\' >\n\n\n<div class=\'tituloHome\' style="background-color:#868686 !important;text-align:center;">INSTRUCCIONES DE USO</div>\n\n<div padding>\n\n  \n  <iframe width="100%" height="300px" [src]="video.url"  frameborder="30" allowfullscreen></iframe>\n\n  <p style="color: #444;">{{video.data?.title || ""}}</p>\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/pages/youtubevide/youtubevide.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* DomSanitizer */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* DomSanitizer */]])
     ], YoutubevidePage);
     return YoutubevidePage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=youtubevide.js.map

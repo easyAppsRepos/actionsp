@@ -25771,7 +25771,7 @@ ion-navbar.toolbar {
 .containerActividadD div:nth-child(1) {
   display: table-cell;
   float: left;
-  text-align: center;
+  text-align: left;
   margin-top: 30px;
 }
 
@@ -25831,6 +25831,54 @@ ion-navbar.toolbar {
   position: relative;
 }
 
+.alert-wrapper {
+  background-color: white !important;
+}
+
+.alert-head {
+  padding: 0px !important;
+}
+
+.alert-button {
+  color: #00aafe !important;
+  font-family: normalL;
+}
+
+.alert-message {
+  margin-top: 20px;
+  color: #444;
+  font-family: normalL;
+  font-size: 19px !important;
+  line-height: 26px;
+  padding: 15px;
+  text-align: -webkit-center;
+}
+
+.alert-sub-title {
+  color: #444;
+  font-family: normalL;
+  font-size: 19px !important;
+  line-height: 26px;
+  padding: 15px;
+  text-align: -webkit-center;
+}
+
+.alert-title {
+  font-size: 22px !important;
+  background: #00aafe !important;
+  margin: 0px !important;
+  padding: 15px 10px !important;
+  color: white;
+  font-family: normalL;
+}
+
+.bodyHome55 {
+  height: 207px;
+  background-size: cover;
+  margin-bottom: 3px;
+  position: relative;
+}
+
 .bodyHome3 {
   background-image: url("../assets/imgs/bicepFoto.png");
   height: 207px;
@@ -25882,6 +25930,7 @@ ion-navbar.toolbar {
 .barraRelleno {
   background-color: #ff0090;
   height: 100%;
+  max-width: 100%;
 }
 
 .select-ios .select-icon .select-icon-inner {
@@ -26007,7 +26056,7 @@ ion-navbar.toolbar {
   color: white;
   font-size: 45px;
   font-weight: 800;
-  padding-top: 59px;
+  padding-top: 45px;
   padding-bottom: 28px;
   font-family: tituloHItalic;
 }
@@ -26122,6 +26171,20 @@ page-equipamento .maquinaData {
   position: relative;
   padding-bottom: 7px;
   padding-top: 17px;
+}
+
+page-login .seg {
+  position: absolute;
+  z-index: 30;
+  margin-top: 25px;
+  padding-left: 55px;
+  padding-right: 55px;
+  font-family: normalL;
+}
+
+page-login .segment-ios .segment-button {
+  color: white !important;
+  background-color: transparent;
 }
 
 ::-webkit-input-placeholder {
