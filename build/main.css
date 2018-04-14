@@ -25831,6 +25831,13 @@ ion-navbar.toolbar {
   position: relative;
 }
 
+.bodyHomee {
+  height: 207px;
+  background-size: cover;
+  margin-bottom: 3px;
+  position: relative;
+}
+
 .alert-wrapper {
   background-color: white !important;
 }
@@ -26171,6 +26178,159 @@ page-equipamento .maquinaData {
   position: relative;
   padding-bottom: 7px;
   padding-top: 17px;
+}
+
+page-horarios ul#ion-segment {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 5px 0 5px;
+}
+
+page-horarios ul#ion-segment li.full {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 0;
+  padding: 0 !important;
+}
+
+page-horarios ul#ion-segment li {
+  background-color: transparent;
+  margin-right: 0;
+  margin-left: 0;
+  padding: 0 13px 0 13px;
+  color: #fff;
+  border: 1px solid;
+  -webkit-transition: all 100ms linear;
+  transition: all 100ms linear;
+  -webkit-transition: all 50ms linear;
+  line-height: 23px;
+  max-height: 25px;
+  min-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+page-horarios ul#ion-segment li:first-of-type {
+  margin-right: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+page-horarios ul#ion-segment li:not(:first-of-type) {
+  border-left-width: 0;
+}
+
+page-horarios ul#ion-segment li:last-of-type {
+  margin-left: 0;
+  border-left-width: 0;
+  border-radius: 0 4px 4px 0;
+}
+
+page-horarios ul#ion-segment li:last-of-type .active {
+  background: red;
+}
+
+page-horarios .seg {
+  position: absolute !important;
+  width: 100% !important;
+  bottom: 0 !important;
+}
+
+page-horarios .sbc {
+  border: none !important;
+  height: 50px !important;
+  font-size: 24px !important;
+  line-height: 50px !important;
+  font-family: normalL !important;
+}
+
+page-horarios ul#ion-segment[primary] li.active {
+  background-color: #488aff;
+  color: #fff;
+}
+
+page-horarios ul#ion-segment[primary] li {
+  border-color: #488aff;
+  color: #488aff;
+}
+
+page-horarios ul#ion-segment[primary] li:hover:not(.active) {
+  background-color: rgba(72, 138, 255, 0.1);
+}
+
+page-horarios ul#ion-segment[secondary] li.active {
+  background-color: #32db64;
+  color: #fff;
+}
+
+page-horarios ul#ion-segment[secondary] li {
+  border-color: #32db64;
+  color: #32db64;
+}
+
+page-horarios ul#ion-segment[secondary] li:hover:not(.active) {
+  background-color: rgba(50, 219, 100, 0.1);
+}
+
+page-horarios ul#ion-segment[danger] li.active {
+  background-color: #f53d3d;
+  color: #fff;
+}
+
+page-horarios ul#ion-segment[danger] li {
+  border-color: #f53d3d;
+  color: #f53d3d;
+}
+
+page-horarios ul#ion-segment[danger] li:hover:not(.active) {
+  background-color: rgba(245, 61, 61, 0.1);
+}
+
+page-horarios ul#ion-segment[light] li.active {
+  background-color: #f4f4f4;
+  color: #fff;
+}
+
+page-horarios ul#ion-segment[light] li {
+  border-color: #f4f4f4;
+  color: #f4f4f4;
+}
+
+page-horarios ul#ion-segment[light] li:hover:not(.active) {
+  background-color: rgba(244, 244, 244, 0.1);
+}
+
+page-horarios ul#ion-segment[dark] li.active {
+  background-color: #222;
+  color: #fff;
+}
+
+page-horarios ul#ion-segment[dark] li {
+  border-color: #222;
+  color: #222;
+}
+
+page-horarios ul#ion-segment[dark] li:hover:not(.active) {
+  background-color: rgba(34, 34, 34, 0.1);
 }
 
 page-login .seg {

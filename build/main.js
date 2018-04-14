@@ -261,10 +261,9 @@ var ApiProvider = (function () {
     };
     ApiProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
     ], ApiProvider);
     return ApiProvider;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=api.js.map
@@ -297,59 +296,59 @@ var map = {
 		14
 	],
 	"../pages/clase/clase.module": [
-		286,
+		285,
 		13
 	],
 	"../pages/equipamento/equipamento.module": [
-		285,
+		287,
 		12
 	],
 	"../pages/escaner/escaner.module": [
-		289,
+		288,
 		11
 	],
 	"../pages/estadistica/estadistica.module": [
-		290,
+		286,
 		10
 	],
 	"../pages/horarioatencion/horarioatencion.module": [
-		287,
+		289,
 		9
 	],
 	"../pages/horarios/horarios.module": [
-		288,
+		290,
 		8
 	],
 	"../pages/inicio/inicio.module": [
-		291,
+		292,
 		7
 	],
 	"../pages/login/login.module": [
-		293,
+		291,
 		6
 	],
 	"../pages/mi-rutina/mi-rutina.module": [
-		292,
+		295,
 		5
 	],
 	"../pages/novedades/novedades.module": [
-		294,
+		296,
 		4
 	],
 	"../pages/nuevo-socio/nuevo-socio.module": [
-		297,
+		293,
 		3
 	],
 	"../pages/perfil/perfil.module": [
-		295,
+		294,
 		2
 	],
 	"../pages/reservar/reservar.module": [
-		296,
+		298,
 		1
 	],
 	"../pages/youtubevide/youtubevide.module": [
-		298,
+		297,
 		0
 	]
 };
@@ -446,20 +445,20 @@ var AppModule = (function () {
                 }, {
                     links: [
                         { loadChildren: '../pages/actividad/actividad.module#ActividadPageModule', name: 'ActividadPage', segment: 'actividad', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/equipamento/equipamento.module#EquipamentoPageModule', name: 'EquipamentoPage', segment: 'equipamento', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/clase/clase.module#ClasePageModule', name: 'ClasePage', segment: 'clase', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/estadistica/estadistica.module#EstadisticaPageModule', name: 'EstadisticaPage', segment: 'estadistica', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/equipamento/equipamento.module#EquipamentoPageModule', name: 'EquipamentoPage', segment: 'equipamento', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/escaner/escaner.module#EscanerPageModule', name: 'EscanerPage', segment: 'escaner', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/horarioatencion/horarioatencion.module#HorarioatencionPageModule', name: 'HorarioatencionPage', segment: 'horarioatencion', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/horarios/horarios.module#HorariosPageModule', name: 'HorariosPage', segment: 'horarios', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/escaner/escaner.module#EscanerPageModule', name: 'EscanerPage', segment: 'escaner', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/estadistica/estadistica.module#EstadisticaPageModule', name: 'EstadisticaPage', segment: 'estadistica', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/inicio/inicio.module#InicioPageModule', name: 'InicioPage', segment: 'inicio', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/mi-rutina/mi-rutina.module#MiRutinaPageModule', name: 'MiRutinaPage', segment: 'mi-rutina', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/novedades/novedades.module#NovedadesPageModule', name: 'NovedadesPage', segment: 'novedades', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/perfil/perfil.module#PerfilPageModule', name: 'PerfilPage', segment: 'perfil', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/reservar/reservar.module#ReservarPageModule', name: 'ReservarPage', segment: 'reservar', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/inicio/inicio.module#InicioPageModule', name: 'InicioPage', segment: 'inicio', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/nuevo-socio/nuevo-socio.module#NuevoSocioPageModule', name: 'NuevoSocioPage', segment: 'nuevo-socio', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/youtubevide/youtubevide.module#YoutubevidePageModule', name: 'YoutubevidePage', segment: 'youtubevide', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/perfil/perfil.module#PerfilPageModule', name: 'PerfilPage', segment: 'perfil', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/mi-rutina/mi-rutina.module#MiRutinaPageModule', name: 'MiRutinaPage', segment: 'mi-rutina', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/novedades/novedades.module#NovedadesPageModule', name: 'NovedadesPage', segment: 'novedades', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/youtubevide/youtubevide.module#YoutubevidePageModule', name: 'YoutubevidePage', segment: 'youtubevide', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/reservar/reservar.module#ReservarPageModule', name: 'ReservarPage', segment: 'reservar', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_11__ionic_storage__["a" /* IonicStorageModule */].forRoot()
@@ -635,7 +634,7 @@ var MyApp = (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/app/app.html"*/'<ion-menu [content]="content">\n<!--   <ion-header>\n    <ion-toolbar>\n      <ion-title>Menvcu</ion-title>\n    </ion-toolbar>\n  </ion-header> -->\n\n  <ion-content class=\'menuLateral\'>\n<!--     <ion-list>\n      <button class=\'itemMenu\' menuClose ion-item *ngFor="let p of pages; let  i = index" (click)="openPage(p)">\n        <img class="menuIcono" [src]="\'assets/imgs/icono\'+(i+1)+\'.png\'" > {{p.title}}\n      </button>\n    </ion-list> -->\n\n<div *ngIf=\'userDataProfile\' class=\'containerMenuProfile\' (click)="goPerfil()" menuClose>\n  <div class="mitadProfile">\n      <img style=\'border-radius: 100%;width: 66%; margin-top: 20px; margin-bottom: 11px;box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);\' src="assets/imgs/profile.png"> \n      <div style="    color: white;margin-bottom: 30px;font-weight: 800;letter-spacing: 0px;">{{userDataProfile?.nombre || \'Desconocido\'}}</div>\n  </div>\n  <div class="mitadProfile" style="vertical-align: super;\n    margin-top: 10px;">\n      <div class="profileEtiq">\n        <div>Socio N</div>\n        <div>{{userDataProfile?.numeroSocio || \'-\'}}</div>\n      </div>\n\n            <div class="profileEtiq">\n        <div>Edad</div>\n        <div>{{CalculateAge(userDataProfile.fechaNacimiento) || \'-\'}}</div>\n      </div>\n\n            <div class="profileEtiq">\n        <div>Personal Trainer</div>\n        <div>{{userDataProfile?.profesor || \'-\'}}</div>\n      </div>\n\n\n  </div>\n  \n</div>\n\n\n\n<div *ngIf=\'!userDataProfile\' class=\'containerMenuProfile\' menuClose>\n<div style="width:100%; text-align:center">\n<button style="    width: 60%;\n    color: white;\n    border: white solid 2px;\n    font-family: normalL;\n    margin-top: 30px;\n    margin-bottom: 30px;"  (click)="openModalLogin()" ion-button  outline>Iniciar Sesion</button>\n  </div>\n</div>\n\n\n        <ion-list>\n\n\n\n    \n      <button class=\'itemMenu\' menuClose ion-item (click)="goHome()">\n        <img class="menuIcono" src="assets/imgs/logong.png" > INICIO\n      </button>\n\n\n\n\n\n      <button class=\'itemMenu\' menuClose ion-item (click)="goHorarios()">\n        <img class="menuIcono" src="assets/imgs/icono1.png" > HORARIOS\n      </button>\n\n            <button class=\'itemMenu\' menuClose ion-item (click)="goRutina()">\n        <img class="menuIcono" src="assets/imgs/icono2.png" > MI RUTINA\n      </button>\n\n\n            <button class=\'itemMenu\' menuClose ion-item (click)="goReservar()">\n        <img class="menuIcono" src="assets/imgs/icono3.png" > RESERVAR CLASE\n      </button>\n            <button class=\'itemMenu\' menuClose ion-item (click)="goEstadistica()">\n        <img class="menuIcono" src="assets/imgs/icono4.png"  > ESTADISTICAS\n      </button>\n<!--             <button class=\'itemMenu\' menuClose ion-item>\n        <img class="menuIcono" src="assets/imgs/icono5.png" > MENSAJES\n      </button> -->\n            <button class=\'itemMenu\' menuClose ion-item (click)="goNovedades()" >\n        <img class="menuIcono" src="assets/imgs/icono6.png" > NOVEDADES\n      </button>\n            <button class=\'itemMenu\' menuClose ion-item   (click)="goEquipamento()"  >\n        <img class="menuIcono" src="assets/imgs/icono7.png" > EQUIPAMENTO\n      </button>\n            <button class=\'itemMenu\' menuClose ion-item (click)="goQR()" >\n        <img class="menuIcono" src="assets/imgs/icono8.png" > ESCANER\n      </button>\n\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n\n\n\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/jose/Documents/appGym/myApp/src/app/app.html"*/'<ion-menu [content]="content">\n<!--   <ion-header>\n    <ion-toolbar>\n      <ion-title>Menvcu</ion-title>\n    </ion-toolbar>\n  </ion-header> -->\n\n  <ion-content class=\'menuLateral\'>\n<!--     <ion-list>\n      <button class=\'itemMenu\' menuClose ion-item *ngFor="let p of pages; let  i = index" (click)="openPage(p)">\n        <img class="menuIcono" [src]="\'assets/imgs/icono\'+(i+1)+\'.png\'" > {{p.title}}\n      </button>\n    </ion-list> -->\n\n<div *ngIf=\'userDataProfile\' class=\'containerMenuProfile\' (click)="goPerfil()" menuClose>\n  <div class="mitadProfile">\n      <img style=\'border-radius: 100%;width: 66%; margin-top: 20px; margin-bottom: 11px;box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);\' [src]="userDataProfile?.imagenUrl"  onError="this.src=\'assets/imgs/profile.png\'" > \n      <div style="    color: white;margin-bottom: 30px;font-weight: 800;letter-spacing: 0px;">{{userDataProfile?.nombre || \'Desconocido\'}}</div>\n  </div>\n  <div class="mitadProfile" style="vertical-align: super;\n    margin-top: 10px;">\n      <div class="profileEtiq">\n        <div>Socio N</div>\n        <div>{{userDataProfile?.numeroSocio || \'-\'}}</div>\n      </div>\n\n            <div class="profileEtiq">\n        <div>Edad</div>\n        <div>{{CalculateAge(userDataProfile.fechaNacimiento) || \'-\'}}</div>\n      </div>\n\n            <div class="profileEtiq">\n        <div>Personal Trainer</div>\n        <div>{{userDataProfile?.profesor || \'-\'}}</div>\n      </div>\n\n\n  </div>\n  \n</div>\n\n\n\n<div *ngIf=\'!userDataProfile\' class=\'containerMenuProfile\' menuClose>\n<div style="width:100%; text-align:center">\n<button style="    width: 60%;\n    color: white;\n    border: white solid 2px;\n    font-family: normalL;\n    margin-top: 30px;\n    margin-bottom: 30px;"  (click)="openModalLogin()" ion-button  outline>Iniciar Sesion</button>\n  </div>\n</div>\n\n\n        <ion-list>\n\n\n\n    \n      <button class=\'itemMenu\' menuClose ion-item (click)="goHome()">\n        <img class="menuIcono" src="assets/imgs/logong.png" > INICIO\n      </button>\n\n\n\n\n\n      <button class=\'itemMenu\' menuClose ion-item (click)="goHorarios()">\n        <img class="menuIcono" src="assets/imgs/icono1.png" > HORARIOS\n      </button>\n\n            <button class=\'itemMenu\' menuClose ion-item (click)="goRutina()">\n        <img class="menuIcono" src="assets/imgs/icono2.png" > MI RUTINA\n      </button>\n\n\n            <button class=\'itemMenu\' menuClose ion-item (click)="goReservar()">\n        <img class="menuIcono" src="assets/imgs/icono3.png" > RESERVAR CLASE\n      </button>\n            <button class=\'itemMenu\' menuClose ion-item (click)="goEstadistica()">\n        <img class="menuIcono" src="assets/imgs/icono4.png"  > ESTADISTICAS\n      </button>\n<!--             <button class=\'itemMenu\' menuClose ion-item>\n        <img class="menuIcono" src="assets/imgs/icono5.png" > MENSAJES\n      </button> -->\n            <button class=\'itemMenu\' menuClose ion-item (click)="goNovedades()" >\n        <img class="menuIcono" src="assets/imgs/icono6.png" > NOVEDADES\n      </button>\n            <button class=\'itemMenu\' menuClose ion-item   (click)="goEquipamento()"  >\n        <img class="menuIcono" src="assets/imgs/icono7.png" > EQUIPAMENTO\n      </button>\n            <button class=\'itemMenu\' menuClose ion-item (click)="goQR()" >\n        <img class="menuIcono" src="assets/imgs/icono8.png" > ESCANER\n      </button>\n\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n\n\n\n'/*ion-inline-end:"/Users/jose/Documents/appGym/myApp/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_4__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]])
     ], MyApp);
