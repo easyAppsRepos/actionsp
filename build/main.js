@@ -523,6 +523,7 @@ var MyApp = (function () {
         this.events = events;
         this.modalCtrl = modalCtrl;
         this.rootPage = 'InicioPage';
+        var meA = this;
         this.initializeApp();
         events.subscribe('userCreated', function (user) {
             _this.userDataProfile = user;
@@ -569,8 +570,7 @@ var MyApp = (function () {
                 push.on('registration', function (data) {
                     console.log('regsustr');
                     console.log(data);
-                    this.storage.set("pushKeyAS", data.registrationId);
-                    localStorage.setItem('pushKeyMM', data.registrationId);
+                    meA.storage.set("pushKeyAS", data.registrationId);
                 });
                 push.on('notification', function (data) {
                     console.log(data);
