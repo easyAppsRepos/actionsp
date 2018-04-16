@@ -101,7 +101,7 @@
 
 <gap:plugin name="phonegap-plugin-barcodescanner"  source="npm" />
 -->
-<plugin name="cordova-plugin-camera" spec="2.4.1">
+<plugin name="cordova-plugin-camera" >
 <variable name="CAMERA_USAGE_DESCRIPTION" value="ActionSport quiere usar la camara" />
 </plugin>
 
