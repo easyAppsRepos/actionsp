@@ -577,8 +577,6 @@ var MyApp = (function () {
                         "senderID": "767342908219"
                     },
                     "ios": {
-                        "senderID": "767342908219",
-                        "gcmSandbox": "true",
                         "alert": "true",
                         "badge": "true",
                         "sound": "true"
