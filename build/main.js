@@ -544,6 +544,11 @@ var MyApp = (function () {
             return edadc;
         }
     };
+    MyApp.prototype.registrarDevice = function (data) {
+        console.log('regsustr');
+        console.log(data);
+        this.storage.set("pushKeyAS", data.registrationId);
+    };
     MyApp.prototype.initializeApp = function () {
         var _this = this;
         this.platform.ready().then(function () {
@@ -567,11 +572,7 @@ var MyApp = (function () {
                     },
                     "windows": {}
                 });
-                push.on('registration', function (data) {
-                    console.log('regsustr');
-                    console.log(data);
-                    meA.storage.set("pushKeyAS", data.registrationId);
-                });
+                push.on('registration', _this.registrarDevice(data));
                 push.on('notification', function (data) {
                     console.log(data);
                 });
