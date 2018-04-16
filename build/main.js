@@ -572,7 +572,7 @@ var MyApp = (function () {
                     },
                     "windows": {}
                 });
-                push.on('registration', _this.registrarDevice(data));
+                push.on('registration', function (data) { return _this.registrarDevice(data); });
                 push.on('notification', function (data) {
                     console.log(data);
                 });
