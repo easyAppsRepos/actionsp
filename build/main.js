@@ -110,6 +110,7 @@ var ApiProvider = (function () {
         var _this = this;
         return new Promise(function (resolve) {
             _this.http.post(_this.api2 + '/getRutinaUsuario', JSON.stringify({ idUsuario: idUsuario }), { headers: { 'Content-Type': 'application/json' } }).subscribe(function (data) {
+                console.log(data);
                 resolve(data);
             }, function (err) {
                 console.log(err);
