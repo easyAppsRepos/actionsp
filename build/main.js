@@ -571,6 +571,7 @@ var MyApp = (function () {
             console.log(_this.platform.is('ios'));
             console.log(_this.platform.platforms());
             if (_this.platform.is('android') || _this.platform.is('ios')) {
+                // if(this.platform.is('cordova') || this.platform.is('cordova')){
                 //PUSH FUNCIONANDO
                 var push = PushNotification.init({
                     "android": {
