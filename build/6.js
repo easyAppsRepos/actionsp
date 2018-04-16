@@ -181,9 +181,6 @@ var LoginPage = (function () {
         var _this = this;
         var loading = this.loadingController.create({ content: "cargando..." });
         loading.present();
-        storage.get('age').then(function (val) {
-            console.log('Your age is', val);
-        });
         this.apiProvider.doLoginApi(this.slideOneForm.value)
             .then(function (data) {
             loading.dismissAll();
