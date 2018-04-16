@@ -579,7 +579,9 @@ var MyApp = (function () {
                     "ios": {
                         "alert": "true",
                         "badge": "true",
-                        "sound": "true"
+                        "sound": "true",
+                        "senderID": "767342908219",
+                        "gcmSandbox": "true"
                     },
                     "windows": {}
                 });
