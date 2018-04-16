@@ -106,7 +106,7 @@
 </plugin>
 
 
-
+<gap:plugin name="cordova-plugin-device" source="npm"  />
   <plugin name="ionic-plugin-keyboard" version="2.2.1" src="https://github.com/driftyco/ionic-plugin-keyboard" />
 
 <gap:plugin name="cordova-plugin-splashscreen" source="npm"  />
