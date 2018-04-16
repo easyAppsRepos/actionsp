@@ -116,7 +116,9 @@
 <gap:plugin name="cordova-plugin-inappbrowser" source="npm"  />
 
 
-
+<plugin name="phonegap-plugin-push" version="1.5.3" source="npm">
+    <param name="SENDER_ID" value="767342908219" />
+</plugin>
 <!-- add a version here, otherwise PGB will use whatever the latest version of the package on npm is \
 
 -->
