@@ -25685,6 +25685,10 @@ ion-navbar.toolbar {
   margin-bottom: 5px !important;
 }
 
+.segment-md {
+  color: white !important;
+}
+
 .toolbar-ios {
   min-height: 67px !important;
 }
